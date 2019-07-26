@@ -7,16 +7,38 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.TextView;
+import android.widget.Toast;
 
 public class FragmentC extends Fragment {
 View view;
+Button btn;
+TextView tv;
     public FragmentC()
-    {}
+    {
+
+
+
+    }
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-       view = inflater.inflate(R.layout.c_fragment, container,false);
+
+
+        view = inflater.inflate(R.layout.c_fragment, container,false);
+        btn = view.findViewById(R.id.button);
+        tv= view.findViewById(R.id.textView);
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+        tv.setText("tekst okinut iz dugmeta");
+        Toast.makeText(getActivity(), "okinuto iz dugmeta", Toast.LENGTH_LONG).show();
+            }
+        });
+
+
         return view;
 
     }
