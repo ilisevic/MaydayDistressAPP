@@ -21,11 +21,19 @@ public class MainActivity extends AppCompatActivity {
         viewPager=findViewById(R.id.viewpager);
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
         //Dodavanje fragmenta
-        adapter.addFragment(new FragmentA(), "Fragment A");
-        adapter.addFragment(new FragmentB(), "Fragment B");
-        adapter.addFragment(new FragmentC(), "Fragment C");
+        adapter.addFragment(new FragmentA(), "Fragment GPS LOCATION");
+        adapter.addFragment(new FragmentB(), "Fragment FLASH");
+        adapter.addFragment(new FragmentC(), "Fragment AUDIO WARNING");
         //podešavanje adaptera
         viewPager.setAdapter(adapter);
         tabLayout.setupWithViewPager(viewPager);
+
+
+
+
+
+
+
+        
     }
 }

@@ -9,4 +9,10 @@
     android:text="B Fragment"
     android:textSize="20sp"
     android:textStyle="bold"/>
+
+    <ToggleButton
+        android:id="@+id/btn_toggle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="ToggleButton" />
 </LinearLayout>

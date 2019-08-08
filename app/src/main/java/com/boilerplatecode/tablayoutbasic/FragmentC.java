@@ -1,5 +1,6 @@
 package com.boilerplatecode.tablayoutbasic;
 
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -15,6 +16,8 @@ public class FragmentC extends Fragment {
 View view;
 Button btn;
 TextView tv;
+
+public MediaPlayer mpSoundSos;
     public FragmentC()
     {
 
@@ -35,11 +38,14 @@ TextView tv;
             public void onClick(View v) {
         tv.setText("tekst okinut iz dugmeta");
         Toast.makeText(getActivity(), "okinuto iz dugmeta", Toast.LENGTH_LONG).show();
+
+                mpSoundSos = MediaPlayer.create(getContext(),R.raw.emergency);
+                mpSoundSos.start();
+
             }
         });
 
 
         return view;
-
     }
 }
