@@ -21,12 +21,12 @@ import android.widget.CompoundButton;
 import android.widget.Toast;
 import android.widget.ToggleButton;
 
-public class FragmentB extends Fragment {
+public class FragmentFlash extends Fragment {
 View view;
 ToggleButton toggleButton;
 CameraManager mCameraManager;
       String mCameraId;
-    public FragmentB ()
+    public FragmentFlash()
     {}
 
     @Nullable

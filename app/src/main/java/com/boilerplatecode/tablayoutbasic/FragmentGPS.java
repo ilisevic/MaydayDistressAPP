@@ -23,14 +23,14 @@ import android.widget.Toast;
 import static android.content.Context.LOCATION_SERVICE;
 
 
-public class FragmentA extends Fragment {
+public class FragmentGPS extends Fragment {
     private Button btn;
     private TextView tv;
     private LocationManager locationManager;
     private LocationListener locationListener;
     private String coorLong, coorLat;
 
-    public FragmentA() {
+    public FragmentGPS() {
         // Required empty public constructor
     }
 

@@ -12,13 +12,13 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class FragmentC extends Fragment {
+public class FragmentSound extends Fragment {
 View view;
 Button btn;
 TextView tv;
 
 public MediaPlayer mpSoundSos;
-    public FragmentC()
+    public FragmentSound()
     {
 
 
