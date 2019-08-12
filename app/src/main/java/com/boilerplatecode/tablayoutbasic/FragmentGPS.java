@@ -29,6 +29,7 @@ public class FragmentGPS extends Fragment {
     private LocationManager locationManager;
     private LocationListener locationListener;
     private String coorLong, coorLat;
+    private Button btnSend;
 
     public FragmentGPS() {
         // Required empty public constructor
@@ -44,7 +45,7 @@ public class FragmentGPS extends Fragment {
                              Bundle savedInstanceState) {
 
       View  view = inflater.inflate(R.layout.a_fragment,container,false);
-
+        btnSend = view.findViewById(R.id.btnSend);
         tv = view.findViewById(R.id.textView);
         btn = view.findViewById(R.id.btn);
         locationManager = (LocationManager) getActivity().getSystemService(LOCATION_SERVICE);
@@ -79,6 +80,21 @@ public class FragmentGPS extends Fragment {
         };
         configureButton();
         //return super.onCreateView(inflater, container,savedInstanceState);
+
+
+        btnSend.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //TODO dodati kod za slanje poruke na više app
+
+                Intent sharingIntent = new Intent(Intent.ACTION_SEND);
+                sharingIntent.setType("text/plain");
+                sharingIntent.putExtra(Intent.EXTRA_SUBJECT, "Subjekt Poruke");
+                sharingIntent.putExtra(Intent.EXTRA_TEXT, "Share Body");
+                startActivity(Intent.createChooser(sharingIntent, "SSHHARRE VVIIAA"));
+            }
+        });
+
         return view;
     }
     private void configureButton() {

@@ -50,7 +50,16 @@ public class FragmentFlash2 extends Fragment {
         btnEnable = view.findViewById(R.id.buttonEnable);
 
         final boolean hasCameraFlash = getActivity().getApplicationContext().getPackageManager().hasSystemFeature(PackageManager.FEATURE_CAMERA_FLASH);
+        Toast.makeText(getContext(), "hasCameraFlash " + hasCameraFlash, Toast.LENGTH_SHORT).show();
+
+
         boolean isEnabled = ContextCompat.checkSelfPermission(getActivity().getApplicationContext(), Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED;
+//0ODO ponovo napisati isEnabled dio -
+        // boolean isEnabled =  ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED;
+
+        if (isEnabled) btnEnable.setVisibility(View.GONE);
+        Toast.makeText(getContext(), "isEnabled " + isEnabled, Toast.LENGTH_SHORT).show();
+
 
         btnEnable.setEnabled(!isEnabled);
         imageFlashLight.setEnabled(isEnabled);
@@ -142,7 +151,6 @@ public class FragmentFlash2 extends Fragment {
         }
 
     }
-
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         switch (requestCode)

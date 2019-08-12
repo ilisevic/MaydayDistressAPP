@@ -11,24 +11,30 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".MainActivity">
+        tools:context=".MainActivity"
+        android:id="@+id/rel_lay">
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:src="@drawable/btn_switch_off"
-            android:id="@+id/imageFlashLight"/>
+            android:id="@+id/imageFlashLight"
+
+            />
 
         <Button
             android:id="@+id/buttonEnable"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:textSize="20sp"
             android:layout_above="@id/imageFlashLight"
-            android:layout_marginBottom="40dp"
-            android:text="Enable Camera"/>
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginBottom="100dp"
+            android:layout_marginTop="100dp"
+            android:text="Enable Camera"
+            android:textSize="20sp" />
 
     </RelativeLayout>
 </FrameLayout>
