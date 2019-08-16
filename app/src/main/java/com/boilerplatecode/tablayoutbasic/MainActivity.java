@@ -34,10 +34,13 @@ public class MainActivity extends AppCompatActivity {
         viewPager=findViewById(R.id.viewpager);
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
         //Dodavanje fragmenta
-        adapter.addFragment(new FragmentGPS(), "Fragment GPS LOCATION");
-        adapter.addFragment(new FragmentFlash(), "Fragment FLASH");
-        adapter.addFragment(new FragmentSound(), "Fragment AUDIO WARNING");
-        adapter.addFragment(new FragmentFlash2(), "Fragment FLASH 2");
+        adapter.addFragment(new FragmentGPS(), "GPS LOCATION");
+        adapter.addFragment(new FragmentFlash(), "FLASH");
+        adapter.addFragment(new FragmentSound(), "AUDIO WARNING");
+        adapter.addFragment(new FragmentFlash2(), "FLASH 2");
+        adapter.addFragment(new FragmentAudioService(), "AUDIO SERVICE WARNING");
+        adapter.addFragment(new FragmentFlashService(), "FLASH SERVICE");
+        adapter.addFragment(new FragmentHelpManual(), "MANUAL");
         //podešavanje adaptera
         viewPager.setAdapter(adapter);
         tabLayout.setupWithViewPager(viewPager);

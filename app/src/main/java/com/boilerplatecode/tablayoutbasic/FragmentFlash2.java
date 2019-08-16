@@ -33,6 +33,7 @@ public class FragmentFlash2 extends Fragment {
     private ImageView imageFlashLight;
     private static final int CAMERA_REQUEST = 50;
     private boolean flashLightStatus = false;
+
     public FragmentFlash2() {
         // Required empty public constructor
     }
