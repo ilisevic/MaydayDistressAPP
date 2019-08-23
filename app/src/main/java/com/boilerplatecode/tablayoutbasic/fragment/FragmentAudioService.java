@@ -1,4 +1,4 @@
-package com.boilerplatecode.tablayoutbasic;
+package com.boilerplatecode.tablayoutbasic.fragment;
 
 
 import android.content.Intent;
@@ -8,6 +8,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+
+import com.boilerplatecode.tablayoutbasic.R;
+import com.boilerplatecode.tablayoutbasic.service.SoundService;
 
 
 /**

@@ -2,14 +2,15 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:backgroundTint="@color/colorTabIndicator"
-    android:gravity="center"
+    android:background="#DF2520"
+
     android:orientation="vertical">
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/btn">
+        android:layout_below="@id/btn"
+        android:background="#DF2520">
 
         <TextView
             android:id="@+id/textView"
@@ -25,28 +26,30 @@
 
     <Button
         android:id="@+id/btn"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:text="CHECK PERMISSION" />
+        android:text="CHECK PERMISSION"
+        android:background="#20DADF" />
 
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
         android:text="Coordinates: "
         android:textSize="30sp"
+        android:background="#DF2520"
 
 
         />
 
     <Button
         android:id="@+id/btnSend"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/btn"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="100dp"
-        android:text="SEND LOCATION" />
+        android:text="SEND LOCATION"
+        android:background="#20DADF" />
 </RelativeLayout>

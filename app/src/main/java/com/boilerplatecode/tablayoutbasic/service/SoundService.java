@@ -1,4 +1,4 @@
-package com.boilerplatecode.tablayoutbasic;
+package com.boilerplatecode.tablayoutbasic.service;
 
 import android.app.Notification;
 import android.app.PendingIntent;
@@ -8,7 +8,10 @@ import android.media.MediaPlayer;
 import android.os.IBinder;
 import android.support.v4.app.NotificationCompat;
 
-import static com.boilerplatecode.tablayoutbasic.App.CHANNEL_ID;
+import com.boilerplatecode.tablayoutbasic.fragment.FragmentAudioService;
+import com.boilerplatecode.tablayoutbasic.R;
+
+import static com.boilerplatecode.tablayoutbasic.utils.App.CHANNEL_ID;
 
 public class SoundService extends Service {
 

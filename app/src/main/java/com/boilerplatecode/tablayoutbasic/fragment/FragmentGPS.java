@@ -1,4 +1,4 @@
-package com.boilerplatecode.tablayoutbasic;
+package com.boilerplatecode.tablayoutbasic.fragment;
 
 import android.Manifest;
 import android.content.Context;
@@ -19,6 +19,8 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.boilerplatecode.tablayoutbasic.R;
 
 import static android.content.Context.LOCATION_SERVICE;
 

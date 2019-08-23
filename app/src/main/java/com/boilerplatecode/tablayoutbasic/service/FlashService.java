@@ -1,4 +1,4 @@
-package com.boilerplatecode.tablayoutbasic;
+package com.boilerplatecode.tablayoutbasic.service;
 
 import android.app.Notification;
 import android.app.PendingIntent;
@@ -9,7 +9,6 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.hardware.camera2.CameraAccessException;
 import android.hardware.camera2.CameraManager;
-import android.media.MediaPlayer;
 import android.os.Build;
 import android.os.IBinder;
 import android.support.annotation.RequiresApi;
@@ -19,7 +18,10 @@ import android.util.Log;
 import android.widget.Toast;
 
 //import static com.boilerplatecode.tablayoutbasic.AppFlash.CHANNEL_FLASH_ID;
-import static com.boilerplatecode.tablayoutbasic.App.CHANNEL_ID;
+import com.boilerplatecode.tablayoutbasic.fragment.FragmentAudioService;
+import com.boilerplatecode.tablayoutbasic.R;
+
+import static com.boilerplatecode.tablayoutbasic.utils.App.CHANNEL_ID;
 
 public class FlashService extends Service {
     private CameraManager mCameraManager;

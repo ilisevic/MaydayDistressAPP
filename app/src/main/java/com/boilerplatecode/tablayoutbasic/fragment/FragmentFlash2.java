@@ -1,4 +1,4 @@
-package com.boilerplatecode.tablayoutbasic;
+package com.boilerplatecode.tablayoutbasic.fragment;
 
 import android.content.Context;
 import android.net.Uri;
@@ -25,7 +25,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-
+import com.boilerplatecode.tablayoutbasic.R;
 
 
 public class FragmentFlash2 extends Fragment {

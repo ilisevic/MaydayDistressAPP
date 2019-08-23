@@ -4,29 +4,40 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
 
-    tools:context=".FragmentAudioService">
+    tools:context=".fragment.FragmentAudioService">
 
     <!-- TODO: Update blank fragment layout -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:background="#DF2520">
 
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="2" />
 
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/btn_start_service"
             android:layout_weight="1"
-            android:text="Start Service" />
+            android:text="Start Service"
+            android:background="#20DADF" />
 
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/btn_stop_service"
             android:layout_weight="1"
-            android:text="Stop Service" />
+            android:text="Stop Service"
+            android:background="#20DADF" />
 
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="8" />
     </LinearLayout>
 
 </FrameLayout>

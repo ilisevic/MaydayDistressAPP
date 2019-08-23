@@ -7,7 +7,7 @@
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
     <application
 
-        android:name=".App"
+        android:name=".utils.App"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -23,8 +23,8 @@
             </intent-filter>
         </activity>
 
-        <service android:name=".SoundService" />
-        <service android:name=".FlashService" />
+        <service android:name=".service.SoundService" />
+        <service android:name=".service.FlashService" />
     </application>
 
 </manifest>

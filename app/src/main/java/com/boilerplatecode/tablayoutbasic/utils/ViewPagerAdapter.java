@@ -1,4 +1,4 @@
-package com.boilerplatecode.tablayoutbasic;
+package com.boilerplatecode.tablayoutbasic.utils;
 
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;

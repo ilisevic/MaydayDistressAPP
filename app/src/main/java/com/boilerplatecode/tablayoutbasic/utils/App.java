@@ -1,4 +1,4 @@
-package com.boilerplatecode.tablayoutbasic;
+package com.boilerplatecode.tablayoutbasic.utils;
 
 import android.app.Application;
 import android.app.NotificationChannel;

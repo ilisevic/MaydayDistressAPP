@@ -11,6 +11,18 @@ import android.view.animation.RotateAnimation;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.boilerplatecode.tablayoutbasic.fragment.FragmentAudioService;
+import com.boilerplatecode.tablayoutbasic.fragment.FragmentFlash;
+import com.boilerplatecode.tablayoutbasic.fragment.FragmentFlash2;
+import com.boilerplatecode.tablayoutbasic.fragment.FragmentFlash3;
+import com.boilerplatecode.tablayoutbasic.fragment.FragmentFlashService;
+import com.boilerplatecode.tablayoutbasic.fragment.FragmentGPS;
+import com.boilerplatecode.tablayoutbasic.fragment.FragmentHelpManual;
+import com.boilerplatecode.tablayoutbasic.fragment.FragmentSound;
+import com.boilerplatecode.tablayoutbasic.utils.Compass;
+import com.boilerplatecode.tablayoutbasic.utils.SOTWFormatter;
+import com.boilerplatecode.tablayoutbasic.utils.ViewPagerAdapter;
+
 
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = "CompassActivity";
@@ -38,6 +50,7 @@ public class MainActivity extends AppCompatActivity {
         adapter.addFragment(new FragmentFlash(), "FLASH");
         adapter.addFragment(new FragmentSound(), "AUDIO WARNING");
         adapter.addFragment(new FragmentFlash2(), "FLASH 2");
+        adapter.addFragment(new FragmentFlash3(), "FLASH 3");
         adapter.addFragment(new FragmentAudioService(), "AUDIO SERVICE WARNING");
         adapter.addFragment(new FragmentFlashService(), "FLASH SERVICE");
         adapter.addFragment(new FragmentHelpManual(), "MANUAL");

@@ -3,13 +3,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".FragmentFlashService">
+    tools:context=".fragment.FragmentFlashService">
 
     <!-- TODO: Update blank fragment layout -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:background="#DF2520">
 
 
         <Button
@@ -17,14 +18,16 @@
             android:layout_height="wrap_content"
             android:id="@+id/btn_flash_start_service"
             android:layout_weight="1"
-            android:text="Start Flash Service" />
+            android:text="Start Flash Service"
+            android:background="#20DADF" />
 
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/btn_flash_stop_service"
             android:layout_weight="1"
-            android:text="Stop Flash Service" />
+            android:text="Stop Flash Service"
+            android:background="#20DADF" />
 
     </LinearLayout>
 </FrameLayout>
