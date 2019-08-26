@@ -6,6 +6,12 @@
 
     android:orientation="vertical">
 
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+
+        android:src="@drawable/gps" />
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -26,14 +32,16 @@
 
     <Button
         android:id="@+id/btn"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:text="CHECK PERMISSION"
-        android:background="#20DADF" />
+        android:background="#20DADF"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="30dp" />
 
     <TextView
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center"
         android:text="Coordinates: "
@@ -45,11 +53,14 @@
 
     <Button
         android:id="@+id/btnSend"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/btn"
+
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="100dp"
+        android:layout_centerVertical="true"
+
         android:text="SEND LOCATION"
-        android:background="#20DADF" />
+        android:layout_alignParentBottom="true"
+        android:background="#20DADF"
+        android:layout_marginBottom="30dp" />
 </RelativeLayout>

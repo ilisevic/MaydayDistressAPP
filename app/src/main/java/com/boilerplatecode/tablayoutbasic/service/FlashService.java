@@ -66,7 +66,7 @@ public class FlashService extends Service {
         switchFlashligtOn();
         //////
         Notification notification = new NotificationCompat.Builder(getBaseContext(), CHANNEL_ID)
-                .setContentTitle("Flash Service")
+                .setContentTitle("SOS Flash Service")
                 .setContentText(input)
                 .setSmallIcon(R.drawable.ic_android)
                 .setContentIntent(pendingIntent)

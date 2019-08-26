@@ -35,7 +35,7 @@ public class SoundService extends Service {
         mediaPlayer.setLooping(true);
         mediaPlayer.start();
         Notification notification = new NotificationCompat.Builder(getBaseContext(), CHANNEL_ID)
-                .setContentTitle("Example Service")
+                .setContentTitle("SoS Sound Service")
                 .setContentText(input)
                 .setSmallIcon(R.drawable.ic_android)
                 .setContentIntent(pendingIntent)

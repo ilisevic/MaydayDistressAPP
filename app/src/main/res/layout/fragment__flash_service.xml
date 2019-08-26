@@ -6,28 +6,38 @@
     tools:context=".fragment.FragmentFlashService">
 
     <!-- TODO: Update blank fragment layout -->
-    <LinearLayout
+
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="horizontal"
         android:background="#DF2520">
 
-
-        <Button
+        <ImageView
             android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/sosbeacon1" />
+        <Button
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/btn_flash_start_service"
-            android:layout_weight="1"
+            android:layout_alignParentTop="true"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"
             android:text="Start Flash Service"
-            android:background="#20DADF" />
+            android:background="#20DADF"
+            android:layout_marginTop="30dp" />
 
         <Button
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/btn_flash_stop_service"
-            android:layout_weight="1"
+            android:layout_alignParentBottom="true"
             android:text="Stop Flash Service"
-            android:background="#20DADF" />
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"
+            android:background="#20DADF"
+            android:layout_marginBottom="30dp" />
 
-    </LinearLayout>
+    </RelativeLayout>
 </FrameLayout>

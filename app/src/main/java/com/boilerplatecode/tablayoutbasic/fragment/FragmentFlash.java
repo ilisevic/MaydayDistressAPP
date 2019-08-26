@@ -102,8 +102,8 @@ CameraManager mCameraManager;
         AlertDialog.Builder alert;
 
         alert = new AlertDialog.Builder(getContext()).setTitle("Nije podržan flash")
-                .setMessage("Nije podržan flash")
-                .setPositiveButton("Settings", new DialogInterface.OnClickListener() {
+                .setMessage("Nije podržan camera flash")
+                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         // TODO intent koji se pokreće

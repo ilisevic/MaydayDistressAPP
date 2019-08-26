@@ -41,6 +41,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="coord: " />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                android:background="@android:color/darker_gray"
+                android:layout_alignParentBottom="true" />
         </RelativeLayout>
     </android.support.design.widget.AppBarLayout>
 
@@ -59,7 +65,14 @@
         android:id="@+id/viewpager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:backgroundTint="#F44336"></android.support.v4.view.ViewPager>
+        android:backgroundTint="#F44336">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+            android:background="@android:color/darker_gray"
+            android:layout_marginTop="@dimen/cardview_compat_inset_shadow" />
+    </android.support.v4.view.ViewPager>
 
 
 

@@ -7,37 +7,47 @@
     tools:context=".fragment.FragmentAudioService">
 
     <!-- TODO: Update blank fragment layout -->
-    <LinearLayout
+
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:background="#DF2520">
 
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/audio" />
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="2" />
+            android:layout_alignParentTop="true"
+            android:id="@+id/tvbrisati" />
 
         <Button
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/btn_start_service"
-            android:layout_weight="1"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"
             android:text="Start Service"
+            android:layout_below="@id/tvbrisati"
             android:background="#20DADF" />
 
         <Button
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/btn_stop_service"
             android:layout_weight="1"
             android:text="Stop Service"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"
             android:background="#20DADF" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="8" />
-    </LinearLayout>
+            android:layout_alignParentBottom="true" />
+    </RelativeLayout>
 
 </FrameLayout>
