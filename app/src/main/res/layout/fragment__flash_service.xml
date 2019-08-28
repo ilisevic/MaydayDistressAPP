@@ -13,31 +13,35 @@
         android:orientation="horizontal"
         android:background="#DF2520">
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="SOS signal broadcast"
+            android:textSize="20sp"
+            android:textStyle="bold" />
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:src="@drawable/sosbeacon1" />
         <Button
-            android:layout_width="wrap_content"
+            android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:id="@+id/btn_flash_start_service"
-            android:layout_alignParentTop="true"
-            android:layout_centerVertical="true"
-            android:layout_centerHorizontal="true"
+            android:layout_centerInParent="true"
+
             android:text="Start Flash Service"
-            android:background="#20DADF"
-            android:layout_marginTop="30dp" />
+            android:background="@drawable/roundedbutton" />
 
         <Button
-            android:layout_width="wrap_content"
+            android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:id="@+id/btn_flash_stop_service"
-            android:layout_alignParentBottom="true"
+            android:layout_marginTop="30dp"
             android:text="Stop Flash Service"
             android:layout_centerVertical="true"
             android:layout_centerHorizontal="true"
-            android:background="#20DADF"
-            android:layout_marginBottom="30dp" />
+            android:layout_below="@+id/btn_flash_start_service"
+            android:background="@drawable/roundedbutton" />
 
     </RelativeLayout>
 </FrameLayout>

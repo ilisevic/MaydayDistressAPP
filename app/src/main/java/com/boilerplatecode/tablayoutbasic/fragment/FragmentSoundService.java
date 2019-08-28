@@ -16,10 +16,10 @@ import com.boilerplatecode.tablayoutbasic.service.SoundService;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class FragmentAudioService extends Fragment {
+public class FragmentSoundService extends Fragment {
     private Button btnStart, btnStop;
 
-    public FragmentAudioService() {
+    public FragmentSoundService() {
         // Required empty public constructor
     }
 

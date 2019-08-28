@@ -18,9 +18,9 @@
 
     <ToggleButton
         android:id="@+id/btn_toggle"
-        android:layout_width="wrap_content"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:text="ToggleButton"
-        android:background="#20DADF"
+        android:background="@drawable/roundedbutton"
         android:layout_centerInParent="true" />
 </RelativeLayout>

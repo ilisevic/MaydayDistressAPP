@@ -18,7 +18,7 @@ import android.util.Log;
 import android.widget.Toast;
 
 //import static com.boilerplatecode.tablayoutbasic.AppFlash.CHANNEL_FLASH_ID;
-import com.boilerplatecode.tablayoutbasic.fragment.FragmentAudioService;
+import com.boilerplatecode.tablayoutbasic.fragment.FragmentSoundService;
 import com.boilerplatecode.tablayoutbasic.R;
 
 import static com.boilerplatecode.tablayoutbasic.utils.App.CHANNEL_ID;
@@ -38,7 +38,7 @@ public class FlashService extends Service {
     public int onStartCommand(Intent intent, int flags, int startId) {
         String input = intent.getStringExtra("inputExtra");
 
-        Intent notificationIntent = new Intent(getBaseContext(), FragmentAudioService.class);
+        Intent notificationIntent = new Intent(getBaseContext(), FragmentSoundService.class);
         PendingIntent pendingIntent = PendingIntent.getActivity(getBaseContext(), 0, notificationIntent, 0);
 ////
 

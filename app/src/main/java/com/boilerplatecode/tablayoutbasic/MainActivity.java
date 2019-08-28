@@ -1,8 +1,11 @@
 package com.boilerplatecode.tablayoutbasic;
 
+import android.content.DialogInterface;
+import android.content.pm.PackageManager;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -10,8 +13,9 @@ import android.view.animation.Animation;
 import android.view.animation.RotateAnimation;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
-import com.boilerplatecode.tablayoutbasic.fragment.FragmentAudioService;
+import com.boilerplatecode.tablayoutbasic.fragment.FragmentSoundService;
 import com.boilerplatecode.tablayoutbasic.fragment.FragmentFlash;
 import com.boilerplatecode.tablayoutbasic.fragment.FragmentFlash2;
 import com.boilerplatecode.tablayoutbasic.fragment.FragmentFlash3;
@@ -44,15 +48,51 @@ public class MainActivity extends AppCompatActivity {
         tabLayout = findViewById(R.id.tablayout);
         appBarLayout= findViewById(R.id.appbar);
         viewPager=findViewById(R.id.viewpager);
+        //
+
+
+        boolean isFlashAvailable = this.getPackageManager().hasSystemFeature(PackageManager.FEATURE_CAMERA_FLASH);
+
+        Toast.makeText(this, "Device got a flash: " + isFlashAvailable, Toast.LENGTH_LONG).show();
+
+
+        if (!isFlashAvailable) {
+
+
+            AlertDialog.Builder alert;
+
+            alert = new AlertDialog.Builder(this).setTitle("Nije podržan flash")
+                    .setMessage("Nije podržan camera flash")
+                    .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            // TODO intent koji se pokreće
+                        }
+                    })
+                    .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.cancel();
+                        }
+                    });
+
+            alert.show();
+
+
+        }
+
+
+        //
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
         //Dodavanje fragmenta
         adapter.addFragment(new FragmentGPS(), "GPS LOCATION");
         adapter.addFragment(new FragmentFlash(), "FLASH");
-        adapter.addFragment(new FragmentSound(), "AUDIO WARNING");
-        adapter.addFragment(new FragmentFlash2(), "FLASH 2");
-        adapter.addFragment(new FragmentFlash3(), "FLASH 3");
-        adapter.addFragment(new FragmentAudioService(), "AUDIO SERVICE WARNING");
         adapter.addFragment(new FragmentFlashService(), "FLASH SERVICE");
+        // adapter.addFragment(new FragmentSound(), "AUDIO WARNING");
+        // adapter.addFragment(new FragmentFlash2(), "FLASH 2");
+        // adapter.addFragment(new FragmentFlash3(), "FLASH 3");
+        adapter.addFragment(new FragmentSoundService(), "AUDIO SERVICE WARNING");
+
         adapter.addFragment(new FragmentHelpManual(), "MANUAL");
         //podešavanje adaptera
         viewPager.setAdapter(adapter);

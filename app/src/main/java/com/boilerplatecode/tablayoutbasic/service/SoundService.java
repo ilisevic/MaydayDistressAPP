@@ -8,7 +8,7 @@ import android.media.MediaPlayer;
 import android.os.IBinder;
 import android.support.v4.app.NotificationCompat;
 
-import com.boilerplatecode.tablayoutbasic.fragment.FragmentAudioService;
+import com.boilerplatecode.tablayoutbasic.fragment.FragmentSoundService;
 import com.boilerplatecode.tablayoutbasic.R;
 
 import static com.boilerplatecode.tablayoutbasic.utils.App.CHANNEL_ID;
@@ -30,7 +30,7 @@ public class SoundService extends Service {
 //        Intent notificationIntent =new Intent(this, MainActivity.class);
 //        PendingIntent pendingIntent = PendingIntent.getActivity(this,0,notificationIntent,0);
         mediaPlayer = MediaPlayer.create(getBaseContext(), R.raw.emergency);
-        Intent notificationIntent = new Intent(getBaseContext(), FragmentAudioService.class);
+        Intent notificationIntent = new Intent(getBaseContext(), FragmentSoundService.class);
         PendingIntent pendingIntent = PendingIntent.getActivity(getBaseContext(), 0, notificationIntent, 0);
         mediaPlayer.setLooping(true);
         mediaPlayer.start();

@@ -10,7 +10,7 @@
     <android.support.design.widget.AppBarLayout
         android:id="@+id/appbar"
         android:layout_width="match_parent"
-        android:layout_height="366dp"
+        android:layout_height="290dp"
         android:addStatesFromChildren="true"
         android:backgroundTint="#FF4500"
         android:elevation="0dp"
@@ -21,8 +21,10 @@
             android:layout_height="wrap_content">
 
             <ImageView
-                android:layout_width="320dp"
-                android:layout_height="320dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="15dp"
+                android:layout_width="280dp"
+                android:layout_height="280dp"
                 android:layout_centerInParent="true"
                 android:contentDescription="@string/compass_dial"
                 android:src="@drawable/dial" />
@@ -54,9 +56,9 @@
         android:id="@+id/tablayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#20DADF"
+        android:background="#d5d9e0"
 
-        app:tabGravity="fill"
+
         app:tabIndicator="@color/colorTabIndicator"
 
         app:tabMode="fixed" />

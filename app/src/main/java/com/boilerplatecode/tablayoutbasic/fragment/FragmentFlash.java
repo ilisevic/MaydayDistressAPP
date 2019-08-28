@@ -36,17 +36,17 @@ CameraManager mCameraManager;
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
        view = inflater.inflate(R.layout.b_fragment, container,false);
 
-
-        boolean isFlashAvailable = getActivity().getApplicationContext().getPackageManager().hasSystemFeature(PackageManager.FEATURE_CAMERA_FLASH);
-
-        Toast.makeText(getContext(), "Device got a flash: " + isFlashAvailable, Toast.LENGTH_LONG).show();
-
-
-        if (!isFlashAvailable) {
-            showNoFlashError();
-
-
-        }
+//
+//        boolean isFlashAvailable = getActivity().getApplicationContext().getPackageManager().hasSystemFeature(PackageManager.FEATURE_CAMERA_FLASH);
+//
+//        Toast.makeText(getContext(), "Device got a flash: " + isFlashAvailable, Toast.LENGTH_LONG).show();
+//
+//
+//        if (!isFlashAvailable) {
+//            showNoFlashError();
+//
+//
+//        }
 
         mCameraManager = (CameraManager) getActivity().getSystemService(Context.CAMERA_SERVICE);
 
@@ -60,9 +60,9 @@ CameraManager mCameraManager;
 
         toggleButton = view.findViewById(R.id.btn_toggle);
 
-        toggleButton.setText("TorchLight ON/OFF");
+        toggleButton.setText("TorchLight  ON");
 
-        toggleButton.setTextOn("TorchLight ON");
+        toggleButton.setTextOn("TorchLight  ON");
         toggleButton.setTextOff("TorchLight OFF");
         toggleButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @TargetApi(Build.VERSION_CODES.M)
