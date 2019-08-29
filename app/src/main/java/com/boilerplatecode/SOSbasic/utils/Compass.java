@@ -1,4 +1,4 @@
-package com.boilerplatecode.tablayoutbasic.utils;
+package com.boilerplatecode.SOSbasic.utils;
 
 import android.content.Context;
 import android.hardware.Sensor;

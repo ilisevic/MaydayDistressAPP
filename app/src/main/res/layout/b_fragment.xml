@@ -3,18 +3,21 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center"
-    android:background="#DF2520">
+    android:background="#DF2520"
+    android:id="@+id/rel_flash">
 
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:src="@drawable/flash" />
-<TextView
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:text="FlashLight"
-    android:textSize="20sp"
-    android:textStyle="bold"/>
+        android:src="@drawable/flashw" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="FlashLight"
+
+        android:textStyle="bold"
+        android:layout_alignParentBottom="true" />
 
     <ToggleButton
         android:id="@+id/btn_toggle"

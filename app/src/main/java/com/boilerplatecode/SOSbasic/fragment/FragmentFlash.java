@@ -1,9 +1,8 @@
-package com.boilerplatecode.tablayoutbasic.fragment;
+package com.boilerplatecode.SOSbasic.fragment;
 
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.pm.PackageManager;
 import android.hardware.camera2.CameraAccessException;
 import android.hardware.camera2.CameraManager;
 import android.os.Build;
@@ -18,10 +17,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CompoundButton;
-import android.widget.Toast;
 import android.widget.ToggleButton;
 
-import com.boilerplatecode.tablayoutbasic.R;
+import com.boilerplatecode.SOSbasic.R;
 
 public class FragmentFlash extends Fragment {
 View view;

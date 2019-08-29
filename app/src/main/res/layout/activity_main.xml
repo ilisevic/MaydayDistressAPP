@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="290dp"
         android:addStatesFromChildren="true"
-        android:backgroundTint="#FF4500"
+        android:backgroundTint="#DF2520"
         android:elevation="0dp"
         android:gravity="center">
 
@@ -23,8 +23,8 @@
             <ImageView
                 android:layout_marginTop="15dp"
                 android:layout_marginBottom="15dp"
-                android:layout_width="280dp"
-                android:layout_height="280dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:layout_centerInParent="true"
                 android:contentDescription="@string/compass_dial"
                 android:src="@drawable/dial" />
@@ -44,20 +44,15 @@
                 android:layout_height="wrap_content"
                 android:text="coord: " />
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="10dp"
-                android:background="@android:color/darker_gray"
-                android:layout_alignParentBottom="true" />
+
         </RelativeLayout>
     </android.support.design.widget.AppBarLayout>
 
     <android.support.design.widget.TabLayout
         android:id="@+id/tablayout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#d5d9e0"
-
+        android:layout_height="60dp"
+        android:background="@drawable/roundedbutton2"
 
         app:tabIndicator="@color/colorTabIndicator"
 
@@ -67,13 +62,9 @@
         android:id="@+id/viewpager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:backgroundTint="#F44336">
+        android:backgroundTint="#DF2520">
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="10dp"
-            android:background="@android:color/darker_gray"
-            android:layout_marginTop="@dimen/cardview_compat_inset_shadow" />
+
     </android.support.v4.view.ViewPager>
 
 

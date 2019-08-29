@@ -19,14 +19,15 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Broadcast SOS sound message"
-            android:textSize="20sp"
+
             android:textStyle="bold"
-            android:id="@+id/tv_info_sound" />
+            android:id="@+id/tv_info_sound"
+            android:layout_alignParentBottom="true" />
 
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:src="@drawable/audio"
+            android:src="@drawable/audiow"
             android:id="@+id/iw" />
 
 

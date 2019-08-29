@@ -1,4 +1,4 @@
-package com.boilerplatecode.tablayoutbasic;
+package com.boilerplatecode.SOSbasic;
 
 import org.junit.Test;
 

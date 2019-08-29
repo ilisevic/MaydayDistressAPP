@@ -1,4 +1,4 @@
-package com.boilerplatecode.tablayoutbasic.service;
+package com.boilerplatecode.SOSbasic.service;
 
 import android.app.Notification;
 import android.app.PendingIntent;
@@ -17,11 +17,11 @@ import android.support.v7.app.AlertDialog;
 import android.util.Log;
 import android.widget.Toast;
 
-//import static com.boilerplatecode.tablayoutbasic.AppFlash.CHANNEL_FLASH_ID;
-import com.boilerplatecode.tablayoutbasic.fragment.FragmentSoundService;
-import com.boilerplatecode.tablayoutbasic.R;
+//import static com.boilerplatecode.SOSbasic.AppFlash.CHANNEL_FLASH_ID;
+import com.boilerplatecode.SOSbasic.fragment.FragmentSoundService;
+import com.boilerplatecode.SOSbasic.R;
 
-import static com.boilerplatecode.tablayoutbasic.utils.App.CHANNEL_ID;
+import static com.boilerplatecode.SOSbasic.utils.App.CHANNEL_ID;
 
 public class FlashService extends Service {
     private CameraManager mCameraManager;

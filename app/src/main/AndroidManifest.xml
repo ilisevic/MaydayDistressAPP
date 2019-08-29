@@ -1,20 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.boilerplatecode.tablayoutbasic">
+    package="com.boilerplatecode.SOSbasic">
 
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
     <application
 
-        android:name=".utils.App"
+        android:name="com.boilerplatecode.SOSbasic.utils.App"
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/logo_sos_small"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@drawable/logo_sos_small"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity"
+        <activity
+            android:name="com.boilerplatecode.SOSbasic.MainActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -23,8 +24,8 @@
             </intent-filter>
         </activity>
 
-        <service android:name=".service.SoundService" />
-        <service android:name=".service.FlashService" />
+        <service android:name="com.boilerplatecode.SOSbasic.service.SoundService" />
+        <service android:name="com.boilerplatecode.SOSbasic.service.FlashService" />
     </application>
 
 </manifest>

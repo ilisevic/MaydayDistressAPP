@@ -4,30 +4,48 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".fragment.FragmentHelpManual"
-    android:background="#DF2520">
+    android:background="#DF2520"
+    android:orientation="vertical">
 
     <!-- TODO: Update blank fragment layout -->
 
 
-    <ImageView
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/audio" />
+            android:textSize="10dp"
+            android:textColor="#34d8eb"
+            android:textStyle="bold"
+            android:text="The quick brown fox jumps over the lazy dog" />
 
-    <ImageView
+        <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/flash" />
+            android:text="The quick brown fox jumps over the lazy dog"
+            android:textSize="20dp"
+            android:textColor="#11de58"
+            android:textStyle="bold" />
 
-    <ImageView
+        <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/gps" />
+            android:textSize="30dp"
+            android:textStyle="bold"
+            android:textColor="#1f55de"
+            android:text="The quick brown fox jumps over the lazy dog" />
 
-    <ImageView
+        <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/sosbeacon1" />
+            android:textSize="40dp"
+            android:textStyle="bold"
+            android:textColor="#e8802e"
+            android:text="The quick brown fox jumps over the lazy dog" />
 
-
+    </LinearLayout>
 </FrameLayout>

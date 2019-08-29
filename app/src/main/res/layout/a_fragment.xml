@@ -10,32 +10,30 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Send GPS coordinates to custom recipient"
-        android:textSize="20sp"
+
         android:textStyle="bold"
-        android:id="@+id/tv_info_gps" />
+        android:id="@+id/tv_info_gps"
+        android:layout_alignParentBottom="true" />
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_alignParentTop="true"
 
-        android:src="@drawable/gps" />
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/btn"
-        android:background="#DF2520">
+        android:src="@drawable/gpsw" />
 
-        <TextView
+
+    <TextView
             android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="Coordinates: "
-            android:textSize="30sp"
+        android:layout_alignParentTop="true"
+
+        android:text="Coord: "
+        android:textStyle="bold"
+
 
 
             />
-    </ScrollView>
 
     <Button
         android:id="@+id/btn"

@@ -1,4 +1,4 @@
-package com.boilerplatecode.tablayoutbasic;
+package com.boilerplatecode.SOSbasic;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("com.boilerplatecode.tablayoutbasic", appContext.getPackageName());
+        assertEquals("com.boilerplatecode.SOSbasic", appContext.getPackageName());
     }
 }

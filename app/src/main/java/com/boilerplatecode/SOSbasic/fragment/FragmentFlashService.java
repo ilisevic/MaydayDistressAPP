@@ -1,4 +1,4 @@
-package com.boilerplatecode.tablayoutbasic.fragment;
+package com.boilerplatecode.SOSbasic.fragment;
 
 
 import android.content.Intent;
@@ -9,8 +9,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
-import com.boilerplatecode.tablayoutbasic.R;
-import com.boilerplatecode.tablayoutbasic.service.FlashService;
+import com.boilerplatecode.SOSbasic.R;
+import com.boilerplatecode.SOSbasic.service.FlashService;
 
 
 /**

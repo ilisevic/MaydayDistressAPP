@@ -1,4 +1,4 @@
-package com.boilerplatecode.tablayoutbasic;
+package com.boilerplatecode.SOSbasic;
 
 import android.content.DialogInterface;
 import android.content.pm.PackageManager;
@@ -15,17 +15,14 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.boilerplatecode.tablayoutbasic.fragment.FragmentSoundService;
-import com.boilerplatecode.tablayoutbasic.fragment.FragmentFlash;
-import com.boilerplatecode.tablayoutbasic.fragment.FragmentFlash2;
-import com.boilerplatecode.tablayoutbasic.fragment.FragmentFlash3;
-import com.boilerplatecode.tablayoutbasic.fragment.FragmentFlashService;
-import com.boilerplatecode.tablayoutbasic.fragment.FragmentGPS;
-import com.boilerplatecode.tablayoutbasic.fragment.FragmentHelpManual;
-import com.boilerplatecode.tablayoutbasic.fragment.FragmentSound;
-import com.boilerplatecode.tablayoutbasic.utils.Compass;
-import com.boilerplatecode.tablayoutbasic.utils.SOTWFormatter;
-import com.boilerplatecode.tablayoutbasic.utils.ViewPagerAdapter;
+import com.boilerplatecode.SOSbasic.fragment.FragmentSoundService;
+import com.boilerplatecode.SOSbasic.fragment.FragmentFlash;
+import com.boilerplatecode.SOSbasic.fragment.FragmentFlashService;
+import com.boilerplatecode.SOSbasic.fragment.FragmentGPS;
+import com.boilerplatecode.SOSbasic.fragment.FragmentHelpManual;
+import com.boilerplatecode.SOSbasic.utils.Compass;
+import com.boilerplatecode.SOSbasic.utils.SOTWFormatter;
+import com.boilerplatecode.SOSbasic.utils.ViewPagerAdapter;
 
 
 public class MainActivity extends AppCompatActivity {

@@ -1,4 +1,4 @@
-package com.boilerplatecode.tablayoutbasic.fragment;
+package com.boilerplatecode.SOSbasic.fragment;
 
 
 import android.os.Bundle;
@@ -7,7 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.boilerplatecode.tablayoutbasic.R;
+import com.boilerplatecode.SOSbasic.R;
 
 
 /**

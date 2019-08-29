@@ -1,8 +1,8 @@
-package com.boilerplatecode.tablayoutbasic.utils;
+package com.boilerplatecode.SOSbasic.utils;
 
 import android.content.Context;
 
-import com.boilerplatecode.tablayoutbasic.R;
+import com.boilerplatecode.SOSbasic.R;
 
 /**
  * SOTW is short Side Of The World

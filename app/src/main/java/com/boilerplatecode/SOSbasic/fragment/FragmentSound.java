@@ -1,4 +1,4 @@
-package com.boilerplatecode.tablayoutbasic.fragment;
+package com.boilerplatecode.SOSbasic.fragment;
 
 import android.media.MediaPlayer;
 import android.os.Bundle;
@@ -12,7 +12,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.boilerplatecode.tablayoutbasic.R;
+import com.boilerplatecode.SOSbasic.R;
 
 public class FragmentSound extends Fragment {
 View view;
@@ -41,7 +41,7 @@ public MediaPlayer mpSoundSos;
         tv.setText("tekst okinut iz dugmeta");
         Toast.makeText(getActivity(), "okinuto iz dugmeta", Toast.LENGTH_LONG).show();
 
-                mpSoundSos = MediaPlayer.create(getContext(),R.raw.emergency);
+                mpSoundSos = MediaPlayer.create(getContext(), R.raw.sosmorsecode1);
                 mpSoundSos.start();
 
             }
