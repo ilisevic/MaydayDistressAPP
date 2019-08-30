@@ -1,9 +1,11 @@
 package com.boilerplatecode.SOSbasic.fragment;
 
 
+import android.app.NotificationManager;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.NotificationManagerCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -32,7 +34,10 @@ public class FragmentFlashService extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment__flash_service, container, false);
 
+///TODO provjeriti ovo ispod, dodano 30.8.2019.
 
+
+        ///kraj dodavanja 30.8.2019.
         btnFlashServiceOn = view.findViewById(R.id.btn_flash_start_service);
         btnFlashServiceOff = view.findViewById(R.id.btn_flash_stop_service);
 

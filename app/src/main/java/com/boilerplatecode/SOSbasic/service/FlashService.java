@@ -13,20 +13,22 @@ import android.os.Build;
 import android.os.IBinder;
 import android.support.annotation.RequiresApi;
 import android.support.v4.app.NotificationCompat;
+import android.support.v4.app.NotificationManagerCompat;
 import android.support.v7.app.AlertDialog;
 import android.util.Log;
 import android.widget.Toast;
 
 //import static com.boilerplatecode.SOSbasic.AppFlash.CHANNEL_FLASH_ID;
+import com.boilerplatecode.SOSbasic.MainActivity;
 import com.boilerplatecode.SOSbasic.fragment.FragmentSoundService;
 import com.boilerplatecode.SOSbasic.R;
 
-import static com.boilerplatecode.SOSbasic.utils.App.CHANNEL_ID;
+import static com.boilerplatecode.SOSbasic.utils.App.CHANNEL_1_ID;
 
 public class FlashService extends Service {
     private CameraManager mCameraManager;
     String mCameraId;
-
+    private NotificationManagerCompat notificationManager;
     @Override
     public IBinder onBind(Intent intent) {
         return null;
@@ -41,6 +43,8 @@ public class FlashService extends Service {
         Intent notificationIntent = new Intent(getBaseContext(), FragmentSoundService.class);
         PendingIntent pendingIntent = PendingIntent.getActivity(getBaseContext(), 0, notificationIntent, 0);
 ////
+        notificationManager = NotificationManagerCompat.from(getBaseContext());
+
 
         boolean isFlashAvailable = getApplicationContext().getApplicationContext().getPackageManager().hasSystemFeature(PackageManager.FEATURE_CAMERA_FLASH);
 
@@ -65,13 +69,28 @@ public class FlashService extends Service {
 
         switchFlashligtOn();
         //////
-        Notification notification = new NotificationCompat.Builder(getBaseContext(), CHANNEL_ID)
+        /// Dodano 30.8.2019
+        Intent activityIntent = new Intent(this, MainActivity.class);
+        PendingIntent contentntent = PendingIntent.getActivity(this, 0, activityIntent, 0);
+
+
+        //////
+        Notification notification = new NotificationCompat.Builder(getBaseContext(), CHANNEL_1_ID)
                 .setContentTitle("SOS Flash Service")
                 .setContentText(input)
-                .setSmallIcon(R.drawable.ic_android)
+                .setSmallIcon(R.drawable.sosbeacon1)
                 .setContentIntent(pendingIntent)
+                .setPriority(NotificationCompat.PRIORITY_HIGH)
+                .setCategory(NotificationCompat.CATEGORY_SERVICE)
+
+                //dodano 30.8.2019
+                .setContentIntent(contentntent)
+                //
                 .build();
-        startForeground(2, notification);
+        //promjenjeno 30.8.2019 TODO provjeriti kada startForegroun a kada NotificationCompatManager()
+        notificationManager.notify(2, notification);
+        // startForeground(2, notification);
+
         return START_STICKY;
     }
 

@@ -9,7 +9,8 @@ import android.support.annotation.RequiresApi;
 public class App extends Application {
 
 
-    public static final String CHANNEL_ID = "exampleServiceChannel";
+    public static final String CHANNEL_1_ID = "S*O*S Channel 1";
+    public static final String CHANNEL_2_ID = "S*O*S Channel 2";
 
     //TODO notification channel_id obavezan na Oreu i više
     // @RequiresApi(api = Build.VERSION_CODES.O)
@@ -26,9 +27,21 @@ public class App extends Application {
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) //TODO naći ispravnu verziju Androida
         {
-            NotificationChannel serviceChannel = new NotificationChannel(CHANNEL_ID, "Example Service Cannel", NotificationManager.IMPORTANCE_DEFAULT);
+            NotificationChannel serviceChannel = new NotificationChannel(CHANNEL_1_ID, "SOS Brodcast Channel", NotificationManager.IMPORTANCE_HIGH);
+            //TODO obavezno probati  serviceChannel.setLightColor();
+            serviceChannel.setDescription("Opis Deskripcije");
             NotificationManager manager = getSystemService(NotificationManager.class);
             manager.createNotificationChannel(serviceChannel);
+
+            ////// dodano onako
+            NotificationChannel serviceChannel2 = new NotificationChannel(CHANNEL_2_ID, "SOS Brodcast Channel 2", NotificationManager.IMPORTANCE_LOW);
+            //TODO obavezno probati  serviceChannel.setLightColor();
+            serviceChannel.setDescription("Opis Deskripcije 2");
+            NotificationManager manager2 = getSystemService(NotificationManager.class);
+            manager2.createNotificationChannel(serviceChannel2);
+
+
+            //////
 
         }
 
