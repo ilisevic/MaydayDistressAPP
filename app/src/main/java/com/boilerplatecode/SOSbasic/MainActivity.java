@@ -85,11 +85,7 @@ public class MainActivity extends AppCompatActivity {
         adapter.addFragment(new FragmentGPS(), "GPS LOCATION");
         adapter.addFragment(new FragmentFlash(), "FLASH");
         adapter.addFragment(new FragmentFlashService(), "FLASH SERVICE");
-        // adapter.addFragment(new FragmentSound(), "AUDIO WARNING");
-        // adapter.addFragment(new FragmentFlash2(), "FLASH 2");
-        // adapter.addFragment(new FragmentFlash3(), "FLASH 3");
         adapter.addFragment(new FragmentSoundService(), "AUDIO SERVICE WARNING");
-
         adapter.addFragment(new FragmentHelpManual(), "MANUAL");
         //podešavanje adaptera
         viewPager.setAdapter(adapter);

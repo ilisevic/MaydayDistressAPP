@@ -44,7 +44,7 @@ public class FragmentGPS extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-      View  view = inflater.inflate(R.layout.a_fragment,container,false);
+        View view = inflater.inflate(R.layout.fragment_gps, container, false);
         btnSend = view.findViewById(R.id.btnSend);
         tv = view.findViewById(R.id.textView);
         btn = view.findViewById(R.id.btn);
