@@ -99,7 +99,7 @@ public class FlashServiceThread extends Service {
                 .setContentIntent(pendingIntent)
                 //
                 .build();
-        //promjenjeno 30.8.2019 TODO provjeriti kada startForegroun a kada NotificationCompatManager()
+        //promjenjeno 30.8.2019 TODO provjeriti kada startForeground a kada NotificationCompatManager()
         // notificationManager.notify(2, notification);
         startForeground(2, notification);
 
@@ -241,22 +241,22 @@ public class FlashServiceThread extends Service {
 
     ////dodavanje threada 6.9.2019
 
-    public static Thread performeBackgroundOpp(final Runnable runnable) {
-        final Thread t = new Thread() {
-
-            public void run() {
-
-                runnable.run();
-            }
-
-        };
-
-        t.start();
-
-        return t;
-
-
-    }
+//    public static Thread performeBackgroundOpp(final Runnable runnable) {
+//        final Thread t = new Thread() {
+//
+//            public void run() {
+//
+//                runnable.run();
+//            }
+//
+//        };
+//
+//        t.start();
+//
+//        return t;
+//
+//
+//    }
 
 
 }

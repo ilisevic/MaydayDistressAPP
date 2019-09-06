@@ -13,6 +13,7 @@ import android.widget.Button;
 
 import com.boilerplatecode.SOSbasic.R;
 import com.boilerplatecode.SOSbasic.service.FlashService;
+import com.boilerplatecode.SOSbasic.service.FlashServiceThread;
 
 
 /**
@@ -45,8 +46,9 @@ public class FragmentFlashService extends Fragment {
         btnFlashServiceOn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                getActivity().startService(new Intent(getActivity(), FlashService.class));
+//TODO ovo izmjenjeno ispod 6.9.2019
+                // getActivity().startService(new Intent(getActivity(), FlashService.class));
+                getActivity().startService(new Intent(getActivity(), FlashServiceThread.class));
 
 
             }
