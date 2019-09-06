@@ -47,8 +47,8 @@ public class FragmentFlashService extends Fragment {
             @Override
             public void onClick(View v) {
 //TODO ovo izmjenjeno ispod 6.9.2019
-                // getActivity().startService(new Intent(getActivity(), FlashService.class));
-                getActivity().startService(new Intent(getActivity(), FlashServiceThread.class));
+                getActivity().startService(new Intent(getActivity(), FlashService.class));
+                // getActivity().startService(new Intent(getActivity(), FlashServiceThread.class));
 
 
             }

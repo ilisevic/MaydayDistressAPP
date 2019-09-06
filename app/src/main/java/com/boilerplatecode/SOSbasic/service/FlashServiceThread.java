@@ -72,12 +72,12 @@ public class FlashServiceThread extends Service {
 
         switchFlashligtOn();
         BlinkFlashRunnable bfr = new BlinkFlashRunnable();
-        try {
+//        try {
             new Thread(bfr).run();
-        } catch (Exception e) {
-            e.printStackTrace();
-            Toast.makeText(getApplication(), e.toString(), Toast.LENGTH_SHORT).show();
-        }
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//            Toast.makeText(getApplication(), e.toString(), Toast.LENGTH_SHORT).show();
+//        }
         //////
         /// Dodano 30.8.2019
         Intent activityIntent = new Intent(this, MainActivity.class);
@@ -103,7 +103,7 @@ public class FlashServiceThread extends Service {
         // notificationManager.notify(2, notification);
         startForeground(2, notification);
 
-
+        Toast.makeText(getApplication(), "Pušteno iz FlashServiceThread", Toast.LENGTH_SHORT).show();
         return START_STICKY;
     }
 
@@ -155,36 +155,40 @@ public class FlashServiceThread extends Service {
     }
 
 
-    private void showNoFlashServiceError() {
-
-        AlertDialog.Builder alert;
-
-        alert = new AlertDialog.Builder(getBaseContext()).setTitle("Nije podržan flash")
-                .setMessage("Nije podržan flash")
-                .setPositiveButton("Settings", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        // TODO intent koji se pokreće
-                    }
-                })
-                .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.cancel();
-                    }
-                });
-
-        alert.show();
-    }
+//    private void showNoFlashServiceError() {
+//
+//        AlertDialog.Builder alert;
+//
+//        alert = new AlertDialog.Builder(getBaseContext()).setTitle("Nije podržan flash")
+//                .setMessage("Nije podržan flash")
+//                .setPositiveButton("Settings", new DialogInterface.OnClickListener() {
+//                    @Override
+//                    public void onClick(DialogInterface dialog, int which) {
+//                        // TODO intent koji se pokreće
+//                    }
+//                })
+//                .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+//                    @Override
+//                    public void onClick(DialogInterface dialog, int which) {
+//                        dialog.cancel();
+//                    }
+//                });
+//
+//        alert.show();
+//    }
 
     class BlinkFlashRunnable implements Runnable {
-
+        BlinkFlashRunnable() {
+        }
         private void blinkFlash() throws CameraAccessException {
         }
 
         @Override
         public void run() {
+            for (int i = 1; i < 10; i++) {
+                Toast.makeText(getApplication(), "brojanje: " + i, Toast.LENGTH_SHORT).show();
 
+            }
 
             CameraManager cameraManager = (CameraManager) getSystemService(Context.CAMERA_SERVICE);
             String blinkString = "1111110000000001111111111111111110000000001111111111";
@@ -225,14 +229,7 @@ public class FlashServiceThread extends Service {
                 }
             }
 
-            try {
-                //  flashLightOff();
 
-
-            } catch (Exception e) {
-
-
-            }
 
 
         }
