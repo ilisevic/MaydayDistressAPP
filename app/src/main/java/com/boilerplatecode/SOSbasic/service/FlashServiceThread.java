@@ -26,10 +26,12 @@ import com.boilerplatecode.SOSbasic.R;
 
 import static com.boilerplatecode.SOSbasic.utils.App.CHANNEL_2_ID;
 
-public class FlashService extends Service {
+public class FlashServiceThread extends Service {
+
     private CameraManager mCameraManager;
     String mCameraId;
     private NotificationManagerCompat notificationManager;
+
     @Override
     public IBinder onBind(Intent intent) {
         return null;
@@ -49,7 +51,7 @@ public class FlashService extends Service {
 
         boolean isFlashAvailable = getApplicationContext().getApplicationContext().getPackageManager().hasSystemFeature(PackageManager.FEATURE_CAMERA_FLASH);
 
-        Toast.makeText(getBaseContext(), "Device got a flash: " + isFlashAvailable, Toast.LENGTH_LONG).show();
+        Toast.makeText(getBaseContext(), "Device got a flash: " + isFlashAvailable, Toast.LENGTH_SHORT).show();
 
 
         if (!isFlashAvailable) {
@@ -69,6 +71,13 @@ public class FlashService extends Service {
         }
 
         switchFlashligtOn();
+        BlinkFlashRunnable bfr = new BlinkFlashRunnable();
+        try {
+            new Thread(bfr).run();
+        } catch (Exception e) {
+            e.printStackTrace();
+            Toast.makeText(getApplication(), e.toString(), Toast.LENGTH_SHORT).show();
+        }
         //////
         /// Dodano 30.8.2019
         Intent activityIntent = new Intent(this, MainActivity.class);
@@ -93,6 +102,7 @@ public class FlashService extends Service {
         //promjenjeno 30.8.2019 TODO provjeriti kada startForegroun a kada NotificationCompatManager()
         // notificationManager.notify(2, notification);
         startForeground(2, notification);
+
 
         return START_STICKY;
     }
@@ -145,9 +155,6 @@ public class FlashService extends Service {
     }
 
 
-
-
-
     private void showNoFlashServiceError() {
 
         AlertDialog.Builder alert;
@@ -170,66 +177,86 @@ public class FlashService extends Service {
         alert.show();
     }
 
+    class BlinkFlashRunnable implements Runnable {
 
-//    private void blinkFlash()   throws CameraAccessException {
-//        CameraManager cameraManager = (CameraManager)getSystemService(Context.CAMERA_SERVICE);
-//        String blinkString  = "1111110000000001111111111111111110000000001111111111";
-//        long blinkDelay = 100; // Delay u milisekundama
-//        for (int i = 0 ; i < blinkString.length(); i++)
-//        {
-//            if (blinkString.charAt(i)=='1')
-//            {
-//
-//                try {
-//
-//
-//                    String cameraId = cameraManager.getCameraIdList()[0];
-//                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-//                        cameraManager.setTorchMode(cameraId,true);
-//                    }
-//
-//                }
-//                catch (Exception e){
-//
-//
-//                    Toast.makeText(getApplicationContext(), e.getMessage().toString()  , Toast.LENGTH_LONG).show();
-//                }
-//            }
-//            else
-//            {
-//                try{
-//                    String cameraId = cameraManager.getCameraIdList()[0];
-//                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-//                        cameraManager.setTorchMode(cameraId,false);
-//                    }
-//                }
-//                catch (Exception e )
-//                {
-//                    Toast.makeText(getApplicationContext(), e.getMessage().toString()  , Toast.LENGTH_LONG).show();
-//
-//                }
-//
-//            }
-//
-//            try {
-//                Thread.sleep(blinkDelay);//TODO vidjeti žašto je ovo jedino pominjanje threada
-//            } catch (InterruptedException e) {
-//                e.printStackTrace();
-//            }
-//        }
-//
-//        try {
-//          //  flashLightOff();
-//
-//
-//        }
-//        catch (Exception e)
-//        {
-//
-//
-//        }
-    // }
+        private void blinkFlash() throws CameraAccessException {
+        }
 
+        @Override
+        public void run() {
+
+
+            CameraManager cameraManager = (CameraManager) getSystemService(Context.CAMERA_SERVICE);
+            String blinkString = "1111110000000001111111111111111110000000001111111111";
+            long blinkDelay = 100; // Delay u milisekundama
+            for (int i = 0; i < blinkString.length(); i++) {
+                if (blinkString.charAt(i) == '1') {
+
+                    try {
+
+
+                        String cameraId = cameraManager.getCameraIdList()[0];
+                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                            cameraManager.setTorchMode(cameraId, true);
+                        }
+
+                    } catch (Exception e) {
+
+
+                        Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_LONG).show();
+                    }
+                } else {
+                    try {
+                        String cameraId = cameraManager.getCameraIdList()[0];
+                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                            cameraManager.setTorchMode(cameraId, false);
+                        }
+                    } catch (Exception e) {
+                        Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_LONG).show();
+
+                    }
+
+                }
+
+                try {
+                    Thread.sleep(blinkDelay);//TODO vidjeti žašto je ovo jedino pominjanje threada
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            try {
+                //  flashLightOff();
+
+
+            } catch (Exception e) {
+
+
+            }
+
+
+        }
+    }
+
+
+    ////dodavanje threada 6.9.2019
+
+    public static Thread performeBackgroundOpp(final Runnable runnable) {
+        final Thread t = new Thread() {
+
+            public void run() {
+
+                runnable.run();
+            }
+
+        };
+
+        t.start();
+
+        return t;
+
+
+    }
 
 
 }

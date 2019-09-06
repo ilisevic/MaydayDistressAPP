@@ -9,8 +9,8 @@ import android.support.annotation.RequiresApi;
 public class App extends Application {
 
 
-    public static final String CHANNEL_1_ID = "S*O*S Channel 1";
-    public static final String CHANNEL_2_ID = "S*O*S Channel 2";
+    public static final String CHANNEL_1_ID = "S*O*S Channel Sound Alert";
+    public static final String CHANNEL_2_ID = "S*O*S Channel Flash Alert";
 
     //TODO notification channel_id obavezan na Oreu i više
     // @RequiresApi(api = Build.VERSION_CODES.O)
@@ -34,6 +34,7 @@ public class App extends Application {
             manager.createNotificationChannel(serviceChannel);
 
             ////// dodano onako
+            //može biti uzrok negašenja 2 notifikacione linije tj za flash
             NotificationChannel serviceChannel2 = new NotificationChannel(CHANNEL_2_ID, "SOS Brodcast Channel 2", NotificationManager.IMPORTANCE_LOW);
             //TODO obavezno probati  serviceChannel.setLightColor();
             serviceChannel.setDescription("Opis Deskripcije 2");

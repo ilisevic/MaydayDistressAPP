@@ -17,7 +17,7 @@ import com.boilerplatecode.SOSbasic.service.SoundService;
  * A simple {@link Fragment} subclass.
  */
 public class FragmentSoundService extends Fragment {
-    private Button btnStart, btnStop;
+    private Button btnSoundServiceStart, btnSoundServiceStop;
 
     public FragmentSoundService() {
         // Required empty public constructor
@@ -31,17 +31,17 @@ public class FragmentSoundService extends Fragment {
         View view = inflater.inflate(R.layout.fragment_audio, container, false);
 
 
-        btnStart = view.findViewById(R.id.btn_start_service);
-        btnStop = view.findViewById(R.id.btn_stop_service);
+        btnSoundServiceStart = view.findViewById(R.id.btn_start_service);
+        btnSoundServiceStop = view.findViewById(R.id.btn_stop_service);
 
-        btnStart.setOnClickListener(new View.OnClickListener() {
+        btnSoundServiceStart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 getActivity().startService(new Intent(getActivity(), SoundService.class));
 
             }
         });
-        btnStop.setOnClickListener(new View.OnClickListener() {
+        btnSoundServiceStop.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 getActivity().stopService(new Intent(getContext(), SoundService.class));

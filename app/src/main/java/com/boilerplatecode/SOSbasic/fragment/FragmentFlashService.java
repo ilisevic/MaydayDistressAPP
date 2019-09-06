@@ -55,7 +55,9 @@ public class FragmentFlashService extends Fragment {
         btnFlashServiceOff.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                getActivity().stopService(new Intent(getActivity(), FlashService.class));
+
+                //TODO ne radi gašenje servisa iz nekog razloga
+                getActivity().stopService(new Intent(getContext(), FlashService.class));
             }
         });
 
