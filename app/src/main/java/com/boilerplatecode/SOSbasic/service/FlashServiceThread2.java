@@ -26,10 +26,13 @@ import com.boilerplatecode.SOSbasic.R;
 
 import static com.boilerplatecode.SOSbasic.utils.App.CHANNEL_2_ID;
 
-public class FlashService extends Service {
+public class FlashServiceThread2 extends Service {
     private CameraManager mCameraManager;
-    String mCameraId;
+    private String mCameraId;
     private NotificationManagerCompat notificationManager;
+    //  public volatile boolean flashRunning = false;
+    volatile private Thread thread;
+
     @Override
     public IBinder onBind(Intent intent) {
         return null;
@@ -68,7 +71,14 @@ public class FlashService extends Service {
             Log.e("Nema Flash", "Nema fleš");
         }
 
-        switchFlashligtOn();
+
+        RunnableFlash runnableFlash = new RunnableFlash();
+
+
+        thread = new Thread(runnableFlash);
+        thread.start();
+
+
         //////
         /// Dodano 30.8.2019
         Intent activityIntent = new Intent(this, MainActivity.class);
@@ -94,144 +104,92 @@ public class FlashService extends Service {
         // notificationManager.notify(2, notification);
         startForeground(2, notification);
 
-        return START_STICKY;
+        return START_NOT_STICKY;
     }
 
 
     @Override
     public void onDestroy() {
+//ovo ubija samo prvi thread, ostali prolaze mimo ovoga
+        thread.interrupt();
         super.onDestroy();
 
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+//            switchFlashligtOff();
+//        }
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            switchFlashligtOff();
-        }
 
     }
 
 
-    @RequiresApi(api = Build.VERSION_CODES.M)
-    private void switchFlashligtOn() {
+    ///TODO odavde nastaviti: napraviti loop u threadu
+    private void blinkFlash() throws CameraAccessException {
+        CameraManager cameraManager = (CameraManager) getSystemService(Context.CAMERA_SERVICE);
+        String blinkString = "1110001111111000111000000000000";
+        long blinkDelay = 400; // Delay u milisekundama
+        for (int i = 0; i < blinkString.length(); i++) {
+            if (false) return;//ako je TRUE dio ispod otpada, ako je FALSE, ide dalje
+            try {
+                Thread.sleep(blinkDelay);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            if (blinkString.charAt(i) == '1') {
 
-        try {
-            mCameraManager.setTorchMode(mCameraId, true);
-
-            //blinkFlash();
-
-        } catch (CameraAccessException e) {
-            Log.e("Nema Flash", "Nema fleš");
-            e.printStackTrace();
-        } catch (Exception e) {
-
-            Log.e("Nema Flash Exception", "Nema fleš Exception");
-            e.printStackTrace();
-        }
-    }
+                try {
 
 
-    @RequiresApi(api = Build.VERSION_CODES.M)
-    private void switchFlashligtOff() {
-
-        try {
-            mCameraManager.setTorchMode(mCameraId, false);
-        } catch (CameraAccessException e) {
-            Log.e("Nema Flash", "Nema fleš");
-            e.printStackTrace();
-        } catch (Exception e) {
-
-            Log.e("Nema Flašh Exception", "Nema fleš Exception");
-            e.printStackTrace();
-        }
-    }
-
-
-
-
-
-    private void showNoFlashServiceError() {
-
-        AlertDialog.Builder alert;
-
-        alert = new AlertDialog.Builder(getBaseContext()).setTitle("Nije podržan flash")
-                .setMessage("Nije podržan flash")
-                .setPositiveButton("Settings", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        // TODO intent koji se pokreće
+                    String cameraId = cameraManager.getCameraIdList()[0];
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                        cameraManager.setTorchMode(cameraId, true);
                     }
-                })
-                .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.cancel();
+
+                } catch (Exception e) {
+
+
+                    Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_LONG).show();
+                }
+            } else {
+                try {
+                    String cameraId = cameraManager.getCameraIdList()[0];
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                        cameraManager.setTorchMode(cameraId, false);
                     }
-                });
+                } catch (Exception e) {
+                    Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_LONG).show();
 
-        alert.show();
-    }
+                }
 
+            }
 
-//    private void blinkFlash()   throws CameraAccessException {
-//        CameraManager cameraManager = (CameraManager)getSystemService(Context.CAMERA_SERVICE);
-//        String blinkString  = "1111110000000001111111111111111110000000001111111111";
-//        long blinkDelay = 100; // Delay u milisekundama
-//        for (int i = 0 ; i < blinkString.length(); i++)
-//        {
-//            if (blinkString.charAt(i)=='1')
-//            {
-//
-//                try {
-//
-//
-//                    String cameraId = cameraManager.getCameraIdList()[0];
-//                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-//                        cameraManager.setTorchMode(cameraId,true);
-//                    }
-//
-//                }
-//                catch (Exception e){
-//
-//
-//                    Toast.makeText(getApplicationContext(), e.getMessage().toString()  , Toast.LENGTH_LONG).show();
-//                }
-//            }
-//            else
-//            {
-//                try{
-//                    String cameraId = cameraManager.getCameraIdList()[0];
-//                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-//                        cameraManager.setTorchMode(cameraId,false);
-//                    }
-//                }
-//                catch (Exception e )
-//                {
-//                    Toast.makeText(getApplicationContext(), e.getMessage().toString()  , Toast.LENGTH_LONG).show();
-//
-//                }
-//
-//            }
-//
 //            try {
 //                Thread.sleep(blinkDelay);//tODO vidjeti žašto je ovo jedino pominjanje threada
-    //urađeno, ovako se poziva delaj a uopšte ne mora biti primjenjen ni runnable ni nasleđen Thread
-
+//  //  urađeno, ovako se poziva delaj a uopšte ne mora biti primjenjen ni runnable ni nasleđen Thread
+//
 //            } catch (InterruptedException e) {
 //                e.printStackTrace();
 //            }
-//        }
-//
-//        try {
-//          //  flashLightOff();
-//
-//
-//        }
-//        catch (Exception e)
-//        {
-//
-//
-//        }
-    // }
+        }
 
 
+    }
+
+    class RunnableFlash implements Runnable {
+
+        @Override
+        public void run() {
+            //    if (flashRunning) return;
+
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                //switchFlashligtOn();
+
+                try {
+                    blinkFlash();
+                } catch (CameraAccessException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
 
 }

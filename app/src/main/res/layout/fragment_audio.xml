@@ -12,8 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:background="@drawable/gradientcolor"
-        android:id="@+id/rely">
+        android:background="@drawable/gradientcolor">
 
         <TextView
             android:layout_width="wrap_content"
@@ -21,14 +20,12 @@
             android:text="Broadcast SOS sound message"
 
             android:textStyle="bold"
-            android:id="@+id/tv_info_sound"
             android:layout_alignParentBottom="true" />
 
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:src="@drawable/audiow"
-            android:id="@+id/iw" />
+            android:src="@drawable/audiow" />
 
 
         <Button

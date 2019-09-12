@@ -25,7 +25,7 @@
         </activity>
 
         <service android:name="com.boilerplatecode.SOSbasic.service.SoundService" />
-        <service android:name="com.boilerplatecode.SOSbasic.service.FlashService" />
+        <service android:name="com.boilerplatecode.SOSbasic.service.FlashServiceThread2" />
     </application>
 
 </manifest>

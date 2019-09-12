@@ -7,7 +7,6 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.graphics.BitmapFactory;
 import android.hardware.camera2.CameraAccessException;
 import android.hardware.camera2.CameraManager;
 import android.os.Build;
@@ -19,15 +18,15 @@ import android.support.v7.app.AlertDialog;
 import android.util.Log;
 import android.widget.Toast;
 
-//import static com.boilerplatecode.SOSbasic.AppFlash.CHANNEL_FLASH_ID;
 import com.boilerplatecode.SOSbasic.MainActivity;
-import com.boilerplatecode.SOSbasic.fragment.FragmentSoundService;
 import com.boilerplatecode.SOSbasic.R;
+import com.boilerplatecode.SOSbasic.fragment.FragmentSoundService;
 
 import static com.boilerplatecode.SOSbasic.utils.App.CHANNEL_2_ID;
 
-public class FlashServiceThread extends Service {
+//import static com.boilerplatecode.SOSbasic.AppFlash.CHANNEL_FLASH_ID;
 
+public class FlashService2 extends Service {
     private CameraManager mCameraManager;
     String mCameraId;
     private NotificationManagerCompat notificationManager;
@@ -51,7 +50,7 @@ public class FlashServiceThread extends Service {
 
         boolean isFlashAvailable = getApplicationContext().getApplicationContext().getPackageManager().hasSystemFeature(PackageManager.FEATURE_CAMERA_FLASH);
 
-        Toast.makeText(getBaseContext(), "Device got a flash: " + isFlashAvailable, Toast.LENGTH_SHORT).show();
+        Toast.makeText(getBaseContext(), "Device got a flash: " + isFlashAvailable, Toast.LENGTH_LONG).show();
 
 
         if (!isFlashAvailable) {
@@ -71,13 +70,6 @@ public class FlashServiceThread extends Service {
         }
 
         switchFlashligtOn();
-        BlinkFlashRunnable bfr = new BlinkFlashRunnable();
-//        try {
-            new Thread(bfr).run();
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//            Toast.makeText(getApplication(), e.toString(), Toast.LENGTH_SHORT).show();
-//        }
         //////
         /// Dodano 30.8.2019
         Intent activityIntent = new Intent(this, MainActivity.class);
@@ -99,11 +91,10 @@ public class FlashServiceThread extends Service {
                 .setContentIntent(pendingIntent)
                 //
                 .build();
-        //promjenjeno 30.8.2019 TODO provjeriti kada startForeground a kada NotificationCompatManager()
+        //promjenjeno 30.8.2019 TODO provjeriti kada startForegroun a kada NotificationCompatManager()
         // notificationManager.notify(2, notification);
         startForeground(2, notification);
 
-        Toast.makeText(getApplication(), "Pušteno iz FlashServiceThread", Toast.LENGTH_SHORT).show();
         return START_STICKY;
     }
 
@@ -155,105 +146,89 @@ public class FlashServiceThread extends Service {
     }
 
 
-//    private void showNoFlashServiceError() {
-//
-//        AlertDialog.Builder alert;
-//
-//        alert = new AlertDialog.Builder(getBaseContext()).setTitle("Nije podržan flash")
-//                .setMessage("Nije podržan flash")
-//                .setPositiveButton("Settings", new DialogInterface.OnClickListener() {
-//                    @Override
-//                    public void onClick(DialogInterface dialog, int which) {
-//                        // TODO intent koji se pokreće
-//                    }
-//                })
-//                .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-//                    @Override
-//                    public void onClick(DialogInterface dialog, int which) {
-//                        dialog.cancel();
-//                    }
-//                });
-//
-//        alert.show();
-//    }
+    private void showNoFlashServiceError() {
 
-    class BlinkFlashRunnable implements Runnable {
-        BlinkFlashRunnable() {
-        }
-        private void blinkFlash() throws CameraAccessException {
-        }
+        AlertDialog.Builder alert;
 
-        @Override
-        public void run() {
-            for (int i = 1; i < 10; i++) {
-                Toast.makeText(getApplication(), "brojanje: " + i, Toast.LENGTH_SHORT).show();
-
-            }
-
-            CameraManager cameraManager = (CameraManager) getSystemService(Context.CAMERA_SERVICE);
-            String blinkString = "1111110000000001111111111111111110000000001111111111";
-            long blinkDelay = 100; // Delay u milisekundama
-            for (int i = 0; i < blinkString.length(); i++) {
-                if (blinkString.charAt(i) == '1') {
-
-                    try {
-
-
-                        String cameraId = cameraManager.getCameraIdList()[0];
-                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                            cameraManager.setTorchMode(cameraId, true);
-                        }
-
-                    } catch (Exception e) {
-
-
-                        Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_LONG).show();
+        alert = new AlertDialog.Builder(getBaseContext()).setTitle("Nije podržan flash")
+                .setMessage("Nije podržan flash")
+                .setPositiveButton("Settings", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        // TODO intent koji se pokreće
                     }
-                } else {
-                    try {
-                        String cameraId = cameraManager.getCameraIdList()[0];
-                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                            cameraManager.setTorchMode(cameraId, false);
-                        }
-                    } catch (Exception e) {
-                        Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_LONG).show();
-
+                })
+                .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
                     }
+                });
 
-                }
-
-                try {
-                    Thread.sleep(blinkDelay);//TODO vidjeti žašto je ovo jedino pominjanje threada
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-            }
-
-
-
-
-        }
+        alert.show();
     }
 
 
-    ////dodavanje threada 6.9.2019
-
-//    public static Thread performeBackgroundOpp(final Runnable runnable) {
-//        final Thread t = new Thread() {
+//    private void blinkFlash()   throws CameraAccessException {
+//        CameraManager cameraManager = (CameraManager)getSystemService(Context.CAMERA_SERVICE);
+//        String blinkString  = "1111110000000001111111111111111110000000001111111111";
+//        long blinkDelay = 100; // Delay u milisekundama
+//        for (int i = 0 ; i < blinkString.length(); i++)
+//        {
+//            if (blinkString.charAt(i)=='1')
+//            {
 //
-//            public void run() {
+//                try {
 //
-//                runnable.run();
+//
+//                    String cameraId = cameraManager.getCameraIdList()[0];
+//                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+//                        cameraManager.setTorchMode(cameraId,true);
+//                    }
+//
+//                }
+//                catch (Exception e){
+//
+//
+//                    Toast.makeText(getApplicationContext(), e.getMessage().toString()  , Toast.LENGTH_LONG).show();
+//                }
+//            }
+//            else
+//            {
+//                try{
+//                    String cameraId = cameraManager.getCameraIdList()[0];
+//                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+//                        cameraManager.setTorchMode(cameraId,false);
+//                    }
+//                }
+//                catch (Exception e )
+//                {
+//                    Toast.makeText(getApplicationContext(), e.getMessage().toString()  , Toast.LENGTH_LONG).show();
+//
+//                }
+//
 //            }
 //
-//        };
+//            try {
+//                Thread.sleep(blinkDelay);//tODO vidjeti žašto je ovo jedino pominjanje threada
+    //urađeno, ovako se poziva delaj a uopšte ne mora biti primjenjen ni runnable ni nasleđen Thread
+
+//            } catch (InterruptedException e) {
+//                e.printStackTrace();
+//            }
+//        }
 //
-//        t.start();
+//        try {
+//          //  flashLightOff();
 //
-//        return t;
+//
+//        }
+//        catch (Exception e)
+//        {
 //
 //
-//    }
+//        }
+    // }
 
 
 }
