@@ -212,7 +212,7 @@ public class FlashService extends Service {
 //            }
 //
 //            try {
-//                Thread.sleep(blinkDelay);//tODO vidjeti žašto je ovo jedino pominjanje threada
+//                Thread.sleep(blinkDelay);//ODO vidjeti žašto je ovo jedino pominjanje threada
     //urađeno, ovako se poziva delaj a uopšte ne mora biti primjenjen ni runnable ni nasleđen Thread
 
 //            } catch (InterruptedException e) {

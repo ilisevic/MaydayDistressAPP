@@ -7,21 +7,21 @@
     android:orientation="vertical">
 
     <Button
-        android:id="@+id/btn"
+        android:id="@+id/btnGetGps"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"
         android:background="@drawable/roundedbutton"
-        android:text="SHOW COODINATES" />
+        android:text="GET COORDINATES" />
 
     <Button
         android:id="@+id/btnSend"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
 
-        android:layout_below="@+id/btn"
+        android:layout_below="@+id/btnGetGps"
         android:layout_centerHorizontal="true"
 
         android:layout_centerVertical="true"
@@ -47,23 +47,13 @@
         android:text="Send GPS coordinates to custom recipient"
         android:textStyle="bold" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/tv_info_gps"
-        android:background="#DF2520"
-        android:gravity="center"
-        android:text="Coordinates: "
-        android:textSize="12sp"
 
-
-        />
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
 
         android:text="Coord: "
         android:textStyle="bold"

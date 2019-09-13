@@ -30,7 +30,7 @@ public class FlashServiceThread2 extends Service {
     private CameraManager mCameraManager;
     private String mCameraId;
     private NotificationManagerCompat notificationManager;
-    //  public volatile boolean flashRunning = false;
+    public volatile boolean flashRunning = true;
     volatile private Thread thread;
 
     @Override
@@ -45,21 +45,11 @@ public class FlashServiceThread2 extends Service {
         String input = intent.getStringExtra("inputExtra");
 
         Intent notificationIntent = new Intent(getBaseContext(), FragmentSoundService.class);
-        // PendingIntent pendingIntent = PendingIntent.getActivity(getBaseContext(), 0, notificationIntent, 0);
-////
+
         notificationManager = NotificationManagerCompat.from(getBaseContext());
 
 
-        boolean isFlashAvailable = getApplicationContext().getApplicationContext().getPackageManager().hasSystemFeature(PackageManager.FEATURE_CAMERA_FLASH);
 
-        Toast.makeText(getBaseContext(), "Device got a flash: " + isFlashAvailable, Toast.LENGTH_LONG).show();
-
-
-        if (!isFlashAvailable) {
-            //  showNoFlashServiceError();
-
-
-        }
 
         mCameraManager = (CameraManager) getBaseContext().getSystemService(Context.CAMERA_SERVICE);
 
@@ -90,7 +80,6 @@ public class FlashServiceThread2 extends Service {
                 .setContentTitle("SOS Flash Service")
                 .setContentText(input)
                 .setSmallIcon(R.drawable.sosbeacon1)
-                //   .setLargeIcon(BitmapFactory.decodeResource(getResources(),R.drawable.logo_sos))
                 .setContentIntent(pendingIntent)
                 .setPriority(NotificationCompat.PRIORITY_HIGH)
                 .setCategory(NotificationCompat.CATEGORY_SERVICE)
@@ -111,66 +100,84 @@ public class FlashServiceThread2 extends Service {
     @Override
     public void onDestroy() {
 //ovo ubija samo prvi thread, ostali prolaze mimo ovoga
+        flashRunning = false;
         thread.interrupt();
         super.onDestroy();
 
-//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-//            switchFlashligtOff();
-//        }
+
 
 
     }
 
 
     ///TODO odavde nastaviti: napraviti loop u threadu
-    private void blinkFlash() throws CameraAccessException {
-        CameraManager cameraManager = (CameraManager) getSystemService(Context.CAMERA_SERVICE);
+    private synchronized void blinkFlash() throws CameraAccessException {
+        mCameraManager = (CameraManager) getSystemService(Context.CAMERA_SERVICE);
         String blinkString = "1110001111111000111000000000000";
-        long blinkDelay = 400; // Delay u milisekundama
-        for (int i = 0; i < blinkString.length(); i++) {
-            if (false) return;//ako je TRUE dio ispod otpada, ako je FALSE, ide dalje
-            try {
-                Thread.sleep(blinkDelay);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-            if (blinkString.charAt(i) == '1') {
+        long blinkDelay = 100; // Delay u milisekundama
 
+
+        while (flashRunning) {
+
+            ///
+            for (int i = 0; i < blinkString.length(); i++) {
+                if (!flashRunning) {
+
+                    thread.interrupt();
+                    break;
+                }//ako je TRUE dio ispod otpada, ako je FALSE, ide dalje
                 try {
+                    Thread.sleep(blinkDelay);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                if (blinkString.charAt(i) == '1') {
+
+                    try {
 
 
-                    String cameraId = cameraManager.getCameraIdList()[0];
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                        cameraManager.setTorchMode(cameraId, true);
+                        String cameraId = mCameraManager.getCameraIdList()[0];
+                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                            // if(!flashRunning) return;
+                            mCameraManager.setTorchMode(cameraId, true);
+                        }
+
+                    } catch (Exception e) {
+
+
+                        Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_LONG).show();
+                    }
+                } else {
+                    try {
+                        String cameraId = mCameraManager.getCameraIdList()[0];
+                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                            mCameraManager.setTorchMode(cameraId, false);
+                        }
+                    } catch (Exception e) {
+                        Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_LONG).show();
+
                     }
 
-                } catch (Exception e) {
-
-
-                    Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_LONG).show();
                 }
-            } else {
-                try {
-                    String cameraId = cameraManager.getCameraIdList()[0];
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                        cameraManager.setTorchMode(cameraId, false);
-                    }
-                } catch (Exception e) {
-                    Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_LONG).show();
 
-                }
 
             }
 
-//            try {
-//                Thread.sleep(blinkDelay);//tODO vidjeti žašto je ovo jedino pominjanje threada
-//  //  urađeno, ovako se poziva delaj a uopšte ne mora biti primjenjen ni runnable ni nasleđen Thread
-//
-//            } catch (InterruptedException e) {
-//                e.printStackTrace();
-//            }
+
         }
 
+        try {
+            String cameraId = mCameraManager.getCameraIdList()[0];
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                mCameraManager.setTorchMode(cameraId, false);
+            }
+        } catch (Exception e) {
+            Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_LONG).show();
+
+        }
+
+
+        //////
 
     }
 

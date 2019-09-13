@@ -24,11 +24,11 @@ import static android.content.Context.LOCATION_SERVICE;
 
 
 public class FragmentGPS extends Fragment {
-    private Button btn;
+    private Button btnGetGps;
     private TextView tv;
     private LocationManager locationManager;
     private LocationListener locationListener;
-    private String coorLong, coorLat;
+    private String coorLong = "x", coorLat = "y", shareMessage;
     private Button btnSend;
 
     public FragmentGPS() {
@@ -47,16 +47,18 @@ public class FragmentGPS extends Fragment {
         View view = inflater.inflate(R.layout.fragment_gps, container, false);
         btnSend = view.findViewById(R.id.btnSend);
         tv = view.findViewById(R.id.textView);
-        btn = view.findViewById(R.id.btn);
+        btnGetGps = view.findViewById(R.id.btnGetGps);
         locationManager = (LocationManager) getActivity().getSystemService(LOCATION_SERVICE);
         locationListener = new LocationListener() {
             @Override
             public void onLocationChanged(Location location) {
 
-                coorLat =  "Latitude= " +  location.getLatitude();
-                coorLong = "Longitude= " + location.getLongitude();
+                coorLat = "Latitude= " + (float) Math.round(location.getLatitude() * 10000) / 10000;
+                coorLong = "Longitude= " + (float) Math.round(location.getLongitude() * 10000) / 10000;
 
-                tv.append("\n " + coorLong + " " + coorLat);
+                tv.setText("Lat:" + coorLat + "\nLong:" + coorLong);
+                shareMessage = "Nalazim se na lokaciji Lat:" + coorLat + ",Long:" + coorLong + " http://google.com/search?q=" + coorLat + "+" + coorLong;
+
             }
 
             @Override
@@ -81,7 +83,6 @@ public class FragmentGPS extends Fragment {
         configureButton();
         //return super.onCreateView(inflater, container,savedInstanceState);
 
-
         btnSend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -89,9 +90,9 @@ public class FragmentGPS extends Fragment {
 
                 Intent sharingIntent = new Intent(Intent.ACTION_SEND);
                 sharingIntent.setType("text/plain");
-                sharingIntent.putExtra(Intent.EXTRA_SUBJECT, "Subjekt Poruke");
-                sharingIntent.putExtra(Intent.EXTRA_TEXT, "Share Body");
-                startActivity(Intent.createChooser(sharingIntent, "SSHHARRE VVIIAA"));
+                sharingIntent.putExtra(Intent.EXTRA_SUBJECT, "S.O.S. INFO");
+                sharingIntent.putExtra(Intent.EXTRA_TEXT, shareMessage);
+                startActivity(Intent.createChooser(sharingIntent, "SHARE GPS LOCATION VIA:"));
             }
         });
 
@@ -99,7 +100,7 @@ public class FragmentGPS extends Fragment {
     }
     private void configureButton() {
 //ova funkcija provjerava dozvole i pokreće locationManager
-        btn.setOnClickListener(new View.OnClickListener() {
+        btnGetGps.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 try {
@@ -111,7 +112,7 @@ public class FragmentGPS extends Fragment {
                         }
                         return;
                     }
-                    //TODO TODO TODO red ispod povezuje locationManager sa (locastionListner)
+                    //TODO  red ispod povezuje locationManager sa (locastionListner)
                     //*************************
 
                     locationManager.requestLocationUpdates("gps", 5000, 0, locationListener);//svakin n milisekundi traži lokaciju
