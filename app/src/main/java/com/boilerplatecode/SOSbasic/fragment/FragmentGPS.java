@@ -53,9 +53,10 @@ public class FragmentGPS extends Fragment {
             @Override
             public void onLocationChanged(Location location) {
 
-                coorLat = "" + (float) Math.round(location.getLatitude() * 10000) / 10000;
-                coorLong = "" + (float) Math.round(location.getLongitude() * 10000) / 10000;
-
+//                coorLat = "" + (float) Math.round(location.getLatitude() * 1000000) / 1000000;
+//                coorLong = "" + (float) Math.round(location.getLongitude() * 1000000) / 1000000;
+                coorLat = "" + (float) location.getLatitude();
+                coorLong = "" + (float) location.getLongitude();
                 tv.setText("Lat:" + coorLat + "\nLong:" + coorLong);
                 shareMessage = "Nalazim se na lokaciji Lat:" + coorLat + ",Long:" + coorLong + " http://google.com/search?q=" + coorLat + "+" + coorLong;
 

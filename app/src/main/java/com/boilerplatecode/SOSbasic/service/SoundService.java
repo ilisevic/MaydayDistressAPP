@@ -31,7 +31,7 @@ public class SoundService extends Service {
 //        mediaPlayer = MediaPlayer.create(this, R.raw.emergency );
         Intent activityIntent = new Intent(this, MainActivity.class);
         PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, activityIntent, 0);
-        mediaPlayer = MediaPlayer.create(getBaseContext(), R.raw.sosmorsecode1);
+        mediaPlayer = MediaPlayer.create(getBaseContext(), R.raw.sosmorsecode2);
         Intent notificationIntent = new Intent(getBaseContext(), FragmentSoundService.class);
         //PendingIntent pendingIntent = PendingIntent.getActivity(getBaseContext(), 0, notificationIntent, 0);
         mediaPlayer.setLooping(true);

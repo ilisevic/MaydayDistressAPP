@@ -20,7 +20,7 @@ public class FragmentHelpManual extends Fragment {
         // Required empty public constructor
     }
 
-
+    //TODO uraditi manual
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
