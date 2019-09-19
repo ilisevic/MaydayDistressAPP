@@ -48,11 +48,15 @@
                 android:id="@+id/fab"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/gradientcolor"
-                android:src="@drawable/manual"
-                android:layout_alignParentBottom="true"
                 android:layout_alignParentEnd="true"
+                android:layout_alignParentTop="true"
+
+
+                android:background="@drawable/gradientcolor"
+
+
                 android:backgroundTint="@color/cardview_dark_background"
+                android:src="@drawable/manual"
 
 
                 />
