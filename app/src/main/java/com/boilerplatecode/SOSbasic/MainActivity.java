@@ -20,6 +20,7 @@ import com.boilerplatecode.SOSbasic.fragment.FragmentFlash;
 import com.boilerplatecode.SOSbasic.fragment.FragmentFlashService;
 import com.boilerplatecode.SOSbasic.fragment.FragmentGPS;
 import com.boilerplatecode.SOSbasic.fragment.FragmentHelpManual;
+import com.boilerplatecode.SOSbasic.fragment.FragmentWhistle;
 import com.boilerplatecode.SOSbasic.utils.Compass;
 import com.boilerplatecode.SOSbasic.utils.SOTWFormatter;
 import com.boilerplatecode.SOSbasic.utils.ViewPagerAdapter;
@@ -85,6 +86,7 @@ public class MainActivity extends AppCompatActivity {
         adapter.addFragment(new FragmentGPS(), "GPS LOCATION");
         adapter.addFragment(new FragmentFlash(), "FLASH LAMP");
         adapter.addFragment(new FragmentFlashService(), "FLASH S.O.S");
+        adapter.addFragment(new FragmentWhistle(), "Whistler");
         adapter.addFragment(new FragmentSoundService(), "AUDIO S.O.S");
         adapter.addFragment(new FragmentHelpManual(), "MANUAL");
         //podešavanje adaptera
