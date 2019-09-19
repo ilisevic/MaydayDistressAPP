@@ -3,12 +3,14 @@ package com.boilerplatecode.SOSbasic;
 import android.content.DialogInterface;
 import android.content.pm.PackageManager;
 import android.support.design.widget.AppBarLayout;
+import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.RotateAnimation;
 import android.widget.ImageView;
@@ -32,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
     private Compass compass;
     private ImageView arrowView;
     private TextView sotwLabel;  // SOTW is for "side of the world"
-
+    private FloatingActionButton fab;
     private float currentAzimuth;
     private SOTWFormatter sotwFormatter;
 
@@ -47,7 +49,14 @@ public class MainActivity extends AppCompatActivity {
         appBarLayout= findViewById(R.id.appbar);
         viewPager=findViewById(R.id.viewpager);
         //
+        fab = findViewById(R.id.fab);
 
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getApplicationContext(), "Manual,Manual, Manual TO DO..", Toast.LENGTH_SHORT).show();
+            }
+        });
 
         boolean isFlashAvailable = this.getPackageManager().hasSystemFeature(PackageManager.FEATURE_CAMERA_FLASH);
 
@@ -88,7 +97,7 @@ public class MainActivity extends AppCompatActivity {
         adapter.addFragment(new FragmentFlashService(), "FLASH S.O.S");
         adapter.addFragment(new FragmentWhistle(), "Whistler");
         adapter.addFragment(new FragmentSoundService(), "AUDIO S.O.S");
-        adapter.addFragment(new FragmentHelpManual(), "MANUAL");
+        // adapter.addFragment(new FragmentHelpManual(), "MANUAL");
         //podešavanje adaptera
         viewPager.setAdapter(adapter);
         tabLayout.setupWithViewPager(viewPager);
