@@ -1,6 +1,7 @@
 package com.boilerplatecode.SOSbasic;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.FloatingActionButton;
@@ -55,6 +56,11 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Toast.makeText(getApplicationContext(), "Manual,Manual, Manual TO DO..", Toast.LENGTH_SHORT).show();
+
+                Intent i = new Intent(getApplicationContext(), ManualActivity.class);
+                startActivity(i);
+
+
             }
         });
 
