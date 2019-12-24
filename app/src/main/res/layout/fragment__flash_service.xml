@@ -15,7 +15,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="SOS signal broadcast"
+            android:text="FlashLight SOS signal broadcast"
 
             android:textStyle="bold"
             android:layout_alignParentBottom="true" />
@@ -29,7 +29,7 @@
             android:id="@+id/btn_flash_start_service"
             android:layout_centerInParent="true"
 
-            android:text="Start Flash Service"
+            android:text="Start SOS light signal"
             android:background="@drawable/roundedbutton" />
 
         <Button
@@ -37,7 +37,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/btn_flash_stop_service"
             android:layout_marginTop="30dp"
-            android:text="Stop Flash Service"
+            android:text="Stop SOS light signal"
             android:layout_centerVertical="true"
             android:layout_centerHorizontal="true"
             android:layout_below="@+id/btn_flash_start_service"

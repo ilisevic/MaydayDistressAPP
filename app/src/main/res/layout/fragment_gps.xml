@@ -14,7 +14,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"
         android:background="@drawable/roundedbutton"
-        android:text="GET COORDINATES" />
+        android:text="GET MY GPS LOCATION" />
 
     <Button
         android:id="@+id/btnSend"
@@ -28,7 +28,7 @@
         android:layout_marginTop="30dp"
         android:layout_marginBottom="10sp"
         android:background="@drawable/roundedbutton"
-        android:text="SEND LOCATION" />
+        android:text="SEND MY GPS LOCATION" />
 
 
     <ImageView

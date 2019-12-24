@@ -1,45 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context=".ManualActivity">
+    tools:context=".ManualActivity"
+    android:orientation="vertical"
+    android:scrollbars="vertical">
 
-    <android.support.design.widget.AppBarLayout
-        android:id="@+id/app_bar"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/app_bar_height"
-        android:fitsSystemWindows="true">
-
-        <android.support.design.widget.CollapsingToolbarLayout
-            android:id="@+id/toolbar_layout"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:fitsSystemWindows="true"
-            app:contentScrim="?attr/colorPrimary"
-            app:layout_scrollFlags="scroll|exitUntilCollapsed"
-            app:toolbarId="@+id/toolbar">
-
-            <android.support.v7.widget.Toolbar
-                android:id="@+id/toolbar"
-                android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize"
-                app:layout_collapseMode="pin" />
-
-        </android.support.design.widget.CollapsingToolbarLayout>
-    </android.support.design.widget.AppBarLayout>
-
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fab"
+    <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/fab_margin"
-        app:layout_anchor="@id/app_bar"
-        app:layout_anchorGravity="bottom|end"
-        app:srcCompat="@android:drawable/ic_dialog_email" />
 
-    <include layout="@layout/content_manual" />
+        android:background="#FFFF00">
 
-</android.support.design.widget.CoordinatorLayout>
+        <ImageView
+        android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:src="@drawable/towel_manual"
+            android:layout_alignParentTop="true"
+            android:id="@+id/iw_towel"
+
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/text_margin"
+            android:gravity="clip_vertical"
+            android:text="DON'T PANIC"
+            android:textSize="120dp"
+            android:textStyle="bold"
+            android:id="@+id/tw_towel1"
+            android:layout_below="@+id/iw_towel"
+            android:textColor="#8b0000"
+
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="clip_vertical"
+            android:text="DON'T PANIC"
+            android:textSize="120dp"
+            android:textStyle="bold"
+            android:id="@+id/tw_towel2"
+            android:layout_below="@+id/tw_towel1"
+            android:textColor="#88AAFF" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="clip_vertical"
+            android:text="DON'T PANIC"
+            android:textSize="120dp"
+            android:textStyle="bold"
+            android:id="@+id/tw_towel3"
+            android:layout_below="@+id/tw_towel2"
+            android:textColor="#00FF00" />
+
+    </RelativeLayout>
+</ScrollView>

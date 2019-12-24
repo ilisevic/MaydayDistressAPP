@@ -107,6 +107,9 @@
         "when a user tries to pick up one of cards.\n\n"
     </string>
     <string name="action_settings">Settings</string>
+    <string name="DeviceGotAFlash">Device got a flash:</string>
+    <string name="labelGPSlocation">GPS LOCATION</string>
+    <string name="textIMLocationGPS">I\'m currently on this location:</string>
 
 
 </resources>

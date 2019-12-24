@@ -16,7 +16,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Broadcast SOS sound message"
+            android:text="Continuosly broadcast SOS sound message"
 
             android:textStyle="bold"
             android:layout_alignParentBottom="true" />
@@ -33,7 +33,7 @@
             android:id="@+id/btn_start_service"
             android:layout_centerVertical="true"
             android:layout_centerHorizontal="true"
-            android:text="Start Service"
+            android:text="Start SOS sound signal"
             android:layout_centerInParent="true"
             android:background="@drawable/roundedbutton" />
 
@@ -42,7 +42,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/btn_stop_service"
             android:layout_weight="1"
-            android:text="Stop Service"
+            android:text="Stop SOS sound signal"
             android:layout_marginTop="30dp"
             android:layout_below="@+id/btn_start_service"
             android:layout_centerHorizontal="true"

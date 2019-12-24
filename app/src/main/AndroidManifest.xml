@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.boilerplatecode.SOSbasic">
+    package="io.github.ilisevic.SOSbasic">
 
     <application
         android:name=".utils.App"
@@ -12,14 +12,28 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".ManualActivity"
-            android:label="Manual"></activity>
+            android:label="Manual" />
         <activity
             android:name=".MainActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
+                <action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <!-- Accepts URIs that begin with "http://www.example.com/gizmos” -->
+                <data
+                    android:scheme="http"
+                    android:host="ilisevic.github.io"
+                    android:pathPrefix="/SOS" />
+                <!-- note that the leading "/" is required for pathPrefix-->
+                <!-- Accepts URIs that begin with "example://gizmos” -->
+                <!--data android:scheme="example"
+                    android:host="gizmos" -->
+
+
             </intent-filter>
         </activity>
 
