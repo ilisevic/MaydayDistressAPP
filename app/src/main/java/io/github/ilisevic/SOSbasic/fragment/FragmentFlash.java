@@ -59,10 +59,10 @@ public class FragmentFlash extends Fragment {
 
         toggleButton = view.findViewById(R.id.btn_toggle);
 
-        toggleButton.setText("FlashLight  ON");
+        toggleButton.setText("START FLASHLIGHT");
 
-        toggleButton.setTextOn("FlashLight  ON");
-        toggleButton.setTextOff("FlashLight OFF");
+        toggleButton.setTextOn("STOP  FLASHLIGHT");
+        toggleButton.setTextOff("START FLASHLIGHT");
         toggleButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @TargetApi(Build.VERSION_CODES.M)
             @Override
