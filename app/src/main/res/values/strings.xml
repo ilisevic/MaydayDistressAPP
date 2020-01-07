@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">SOS Basic app</string>
+    <string name="app_name">SOS Beacon and Locator</string>
 
 
     <string name="compass_dial" translatable="false">Compass Dial</string>

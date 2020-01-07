@@ -70,10 +70,14 @@ public class MainActivity extends AppCompatActivity {
         });
 
         boolean isFlashAvailable = this.getPackageManager().hasSystemFeature(PackageManager.FEATURE_CAMERA_FLASH);
+        boolean hasSensorCompass = this.getPackageManager().hasSystemFeature(PackageManager.FEATURE_SENSOR_COMPASS);
+
         if (!isFlashAvailable) {
             Toast.makeText(this, "Device got a flash: " + isFlashAvailable, Toast.LENGTH_SHORT).show();
 
         }
+
+
         if (!isFlashAvailable) {
 
 
@@ -81,6 +85,33 @@ public class MainActivity extends AppCompatActivity {
 
             alert = new AlertDialog.Builder(this).setTitle("No FlashLight present")
                     .setMessage("No FlashLight present, some APP function might not work")
+                    .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            // TODO intent koji se pokreće
+                        }
+                    })
+                    .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.cancel();
+                        }
+                    });
+
+            alert.show();
+
+
+        }
+
+        //ALERT za Compass
+
+
+        if (!hasSensorCompass) {
+
+            AlertDialog.Builder alert;
+
+            alert = new AlertDialog.Builder(this).setTitle("No compass sensor present")
+                    .setMessage("No compass sensor present, compass will not work")
                     .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
@@ -118,7 +149,11 @@ public class MainActivity extends AppCompatActivity {
 
         arrowView = findViewById(R.id.main_image_hands);
         sotwLabel = findViewById(R.id.sotw_label);
+
+
         setupCompass();
+
+        if (!hasSensorCompass) sotwLabel.setText("No compass sensor available");
 
 
     }
