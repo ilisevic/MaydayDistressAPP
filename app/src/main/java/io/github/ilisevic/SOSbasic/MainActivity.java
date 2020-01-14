@@ -3,6 +3,8 @@ package io.github.ilisevic.SOSbasic;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.hardware.Sensor;
+import android.hardware.SensorManager;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TabLayout;
@@ -54,6 +56,11 @@ public class MainActivity extends AppCompatActivity {
         tabLayout = findViewById(R.id.tablayout);
         appBarLayout = findViewById(R.id.appbar);
         viewPager = findViewById(R.id.viewpager);
+
+        sotwFormatter = new SOTWFormatter(this);
+
+        arrowView = findViewById(R.id.main_image_hands);
+        sotwLabel = findViewById(R.id.sotw_label);
         //
         fab = findViewById(R.id.fab);
 
@@ -68,14 +75,20 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
-
+        SensorManager sensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
         boolean isFlashAvailable = this.getPackageManager().hasSystemFeature(PackageManager.FEATURE_CAMERA_FLASH);
         boolean hasSensorCompass = this.getPackageManager().hasSystemFeature(PackageManager.FEATURE_SENSOR_COMPASS);
+        Sensor mSensorTypeMagneticFiled = sensorManager.getDefaultSensor(Sensor.TYPE_MAGNETIC_FIELD);
+//        if (mSensorTypeMagneticFiled!=null)
+//        {
+//
+//            Toast.makeText(getApplicationContext(),"Device has got compass sensor", Toast.LENGTH_LONG).show();
+//        }
 
-        if (!isFlashAvailable) {
-            Toast.makeText(this, "Device got a flash: " + isFlashAvailable, Toast.LENGTH_SHORT).show();
-
-        }
+//        if (!isFlashAvailable) {
+//            Toast.makeText(this, "Device got a flash: " + isFlashAvailable, Toast.LENGTH_SHORT).show();
+//
+//        }
 
 
         if (!isFlashAvailable) {
@@ -130,6 +143,33 @@ public class MainActivity extends AppCompatActivity {
 
         }
 
+        if (mSensorTypeMagneticFiled == null) {
+
+            AlertDialog.Builder alert;
+
+            alert = new AlertDialog.Builder(this).setTitle("No compass sensor present")
+                    .setMessage("No compass sensor present, compass will not work")
+                    .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            // TODO intent koji se pokreće
+                        }
+                    })
+                    .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.cancel();
+                        }
+                    });
+
+            alert.show();
+            sotwLabel.setText("COMPASS SENSOR MISSING!!");
+            sotwLabel.setTextSize(20);
+
+        }
+
+        //else  {   Toast.makeText(getBaseContext(), "Ima Compass sensor", Toast.LENGTH_LONG).show();};
+
 
         //
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
@@ -145,10 +185,6 @@ public class MainActivity extends AppCompatActivity {
         tabLayout.setupWithViewPager(viewPager);
 
 
-        sotwFormatter = new SOTWFormatter(this);
-
-        arrowView = findViewById(R.id.main_image_hands);
-        sotwLabel = findViewById(R.id.sotw_label);
 
 
         setupCompass();
