@@ -23,6 +23,7 @@ public class Compass implements SensorEventListener {
     private float[] mGeomagnetic = new float[3];
     private float[] R = new float[9];
     private float[] I = new float[9];
+    public boolean gotCompassSensor;//TODO ovo proširiti kako bi obavještavao o nedostajučim senzorima
 
     private float azimuth;
     private float azimuthFix;

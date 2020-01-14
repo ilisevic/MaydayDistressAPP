@@ -24,16 +24,17 @@
             android:layout_height="match_parent"
             android:src="@drawable/sosbeaconw" />
         <Button
-            android:layout_width="200dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/btn_flash_start_service"
             android:layout_centerInParent="true"
 
             android:text="Start SOS light signal"
-            android:background="@drawable/roundedbutton" />
+            android:background="@drawable/roundedbutton2"
+            android:layout_marginHorizontal="10dp" />
 
         <Button
-            android:layout_width="200dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/btn_flash_stop_service"
             android:layout_marginTop="30dp"
@@ -41,7 +42,8 @@
             android:layout_centerVertical="true"
             android:layout_centerHorizontal="true"
             android:layout_below="@+id/btn_flash_start_service"
-            android:background="@drawable/roundedbutton" />
+            android:background="@drawable/roundedbutton2"
+            android:layout_marginHorizontal="10dp" />
 
     </RelativeLayout>
 </FrameLayout>
