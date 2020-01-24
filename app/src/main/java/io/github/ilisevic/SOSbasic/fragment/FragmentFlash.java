@@ -17,6 +17,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CompoundButton;
+import android.widget.ImageView;
 import android.widget.ToggleButton;
 
 import io.github.ilisevic.SOSbasic.R;
@@ -26,6 +27,7 @@ public class FragmentFlash extends Fragment {
     ToggleButton toggleButton;
     CameraManager mCameraManager;
     String mCameraId;
+    ImageView imageView;
 
     public FragmentFlash() {
     }
@@ -34,7 +36,8 @@ public class FragmentFlash extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_flash, container, false);
-
+        imageView = view.findViewById(R.id.imageview_flash);
+        imageView.setBackgroundResource(R.drawable.flashw_off);
 //
 //        boolean isFlashAvailable = getActivity().getApplicationContext().getPackageManager().hasSystemFeature(PackageManager.FEATURE_CAMERA_FLASH);
 //
@@ -69,6 +72,11 @@ public class FragmentFlash extends Fragment {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
 
                 switchFlashligtOn(isChecked);
+                if (isChecked) {
+                    imageView.setBackgroundResource(R.drawable.flashw);
+                } else {
+                    imageView.setBackgroundResource(R.drawable.flashw_off);
+                }
 
             }
         });

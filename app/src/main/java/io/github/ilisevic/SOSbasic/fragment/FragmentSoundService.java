@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 
 import io.github.ilisevic.SOSbasic.R;
 import io.github.ilisevic.SOSbasic.service.SoundService;
@@ -18,6 +19,7 @@ import io.github.ilisevic.SOSbasic.service.SoundService;
  */
 public class FragmentSoundService extends Fragment {
     private Button btnSoundServiceStart, btnSoundServiceStop;
+    ImageView imageView;
 
     public FragmentSoundService() {
         // Required empty public constructor
@@ -30,7 +32,8 @@ public class FragmentSoundService extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_audio, container, false);
 
-
+        imageView = view.findViewById(R.id.imageview_audio);
+        imageView.setBackgroundResource(R.drawable.audiow_off);
         btnSoundServiceStart = view.findViewById(R.id.btn_start_service);
         btnSoundServiceStop = view.findViewById(R.id.btn_stop_service);
 
@@ -43,6 +46,7 @@ public class FragmentSoundService extends Fragment {
                 getActivity().startService(new Intent(getActivity(), SoundService.class));
                 btnSoundServiceStart.setEnabled(false);
                 btnSoundServiceStop.setEnabled(true);
+                imageView.setBackgroundResource(R.drawable.audiow);
 
             }
         });
@@ -51,6 +55,7 @@ public class FragmentSoundService extends Fragment {
             public void onClick(View v) {
                 getActivity().stopService(new Intent(getContext(), SoundService.class));
                 btnSoundServiceStart.setEnabled(true);
+                imageView.setBackgroundResource(R.drawable.audiow_off);
 
             }
         });

@@ -20,9 +20,11 @@
             android:textStyle="bold"
             android:layout_alignParentBottom="true" />
         <ImageView
+            android:id="@+id/imageview_flash_service"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:src="@drawable/sosbeaconw" />
+
+            />
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

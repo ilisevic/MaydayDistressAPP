@@ -21,9 +21,9 @@
             android:layout_alignParentBottom="true" />
 
         <ImageView
+            android:id="@+id/imageview_whistle"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:src="@drawable/whistlew" />
+            android:layout_height="match_parent" />
 
 
         <ToggleButton

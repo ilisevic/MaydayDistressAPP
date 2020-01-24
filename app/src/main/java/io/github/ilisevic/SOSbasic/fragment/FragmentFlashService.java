@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 
 import io.github.ilisevic.SOSbasic.R;
 import io.github.ilisevic.SOSbasic.service.FlashServiceThread2;
@@ -20,6 +21,7 @@ import io.github.ilisevic.SOSbasic.service.FlashServiceThread2;
  */
 public class FragmentFlashService extends Fragment {
     View view;
+    ImageView imageView;
     Button btnFlashServiceOn, btnFlashServiceOff;
 
 
@@ -34,9 +36,9 @@ public class FragmentFlashService extends Fragment {
 
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment__flash_service, container, false);
-
+        imageView = view.findViewById(R.id.imageview_flash_service);
 ///TODO provjeriti ovo ispod, dodano 30.8.2019.
-
+        imageView.setBackgroundResource(R.drawable.sosbeaconw_off);
 
         ///kraj dodavanja 30.8.2019.
         btnFlashServiceOn = view.findViewById(R.id.btn_flash_start_service);
@@ -52,7 +54,7 @@ public class FragmentFlashService extends Fragment {
 
                 // FlashServiceThread2.flashRunning= true;
                 getActivity().startService(new Intent(getActivity(), FlashServiceThread2.class));
-
+                imageView.setBackgroundResource(R.drawable.sosbeaconw);
 
             }
         });
@@ -66,6 +68,7 @@ public class FragmentFlashService extends Fragment {
                 //  getActivity().stopService(new Intent(getContext(), FlashService.class));
 
                 getActivity().stopService(new Intent(getContext(), FlashServiceThread2.class));
+                imageView.setBackgroundResource(R.drawable.sosbeaconw_off);
 
                 // fst2.switchFlashligtOff();
 
