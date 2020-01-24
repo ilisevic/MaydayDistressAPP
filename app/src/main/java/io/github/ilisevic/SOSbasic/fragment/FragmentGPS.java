@@ -85,11 +85,16 @@ public class FragmentGPS extends Fragment {
             public void onClick(View v) {
                 //TODO dodati kod za slanje poruke na više app
 
-                Intent sharingIntent = new Intent(Intent.ACTION_SEND);
-                sharingIntent.setType("text/plain");
-                sharingIntent.putExtra(Intent.EXTRA_SUBJECT, "S.O.S. INFO");
-                sharingIntent.putExtra(Intent.EXTRA_TEXT, shareMessage);
-                startActivity(Intent.createChooser(sharingIntent, "SHARE GPS LOCATION VIA:"));
+                if (!("y").equals((coorLat)) && !("x").equals(coorLong) && !("0.0").equals(coorLat) && !("0.0").equals(coorLong)) {
+
+                    Intent sharingIntent = new Intent(Intent.ACTION_SEND);
+                    sharingIntent.setType("text/plain");
+                    sharingIntent.putExtra(Intent.EXTRA_SUBJECT, "S.O.S. INFO");
+                    sharingIntent.putExtra(Intent.EXTRA_TEXT, shareMessage);
+                    startActivity(Intent.createChooser(sharingIntent, "SHARE GPS LOCATION VIA:"));
+                } else
+                    Toast.makeText(getContext(), "GPS coordinates still not available, please try again", Toast.LENGTH_LONG)
+                            .show();
             }
         });
 
