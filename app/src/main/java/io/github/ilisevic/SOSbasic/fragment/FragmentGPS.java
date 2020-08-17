@@ -39,44 +39,54 @@ public class FragmentGPS extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
+        // Thread.setDefaultUncaughtExceptionHandler(new ExceptionHandler(this));
         View view = inflater.inflate(R.layout.fragment_gps, container, false);
         btnSend = view.findViewById(R.id.btnSend);
         tv = view.findViewById(R.id.textView);
         btnGetGps = view.findViewById(R.id.btnGetGps);
-        locationManager = (LocationManager) getActivity().getSystemService(LOCATION_SERVICE);
-        locationListener = new LocationListener() {
-            @Override
-            public void onLocationChanged(Location location) {
+
+        try {
+            locationManager = (LocationManager) getActivity().getSystemService(LOCATION_SERVICE);
+
+            locationListener = new LocationListener() {
+                @Override
+
+
+                public void onLocationChanged(Location location) {
 
 //                coorLat = "" + (float) Math.round(location.getLatitude() * 1000000) / 1000000;
 //                coorLong = "" + (float) Math.round(location.getLongitude() * 1000000) / 1000000;
-                coorLat = "" + (float) location.getLatitude();
-                coorLong = "" + (float) location.getLongitude();
-                tv.setText("Lat:" + coorLat + "\nLong:" + coorLong);
-                shareMessage = getString(R.string.textIMLocationGPS) + coorLat + ",Long:" + coorLong + " http://google.com/search?q=" + coorLat + "+" + coorLong;
+                    coorLat = "" + (float) location.getLatitude();
+                    coorLong = "" + (float) location.getLongitude();
+                    tv.setText("Lat:" + coorLat + "\nLong:" + coorLong);
+                    shareMessage = getString(R.string.textIMLocationGPS) + coorLat + ",Long:" + coorLong + " http://google.com/search?q=" + coorLat + "+" + coorLong;
 
-            }
+                }
 
-            @Override
-            public void onStatusChanged(String provider, int status, Bundle extras) {
+                @Override
+                public void onStatusChanged(String provider, int status, Bundle extras) {
 
-            }
+                }
 
-            @Override
-            public void onProviderEnabled(String provider) {
+                @Override
+                public void onProviderEnabled(String provider) {
 
-            }
+                }
 
-            @Override
-            public void onProviderDisabled(String provider) {
+                @Override
+                public void onProviderDisabled(String provider) {
 
-                Intent i = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
-                startActivity(i);
+                    Intent i = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
+                    startActivity(i);
 
 
-            }
-        };
+                }
+            };
+        } catch (Exception e) {
+            Toast.makeText(getContext(), "Error: " + e.toString(), Toast.LENGTH_LONG).show();
+
+
+        }
         configureButton();
         //return super.onCreateView(inflater, container,savedInstanceState);
 
