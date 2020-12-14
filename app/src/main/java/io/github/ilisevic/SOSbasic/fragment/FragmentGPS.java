@@ -53,13 +53,20 @@ public class FragmentGPS extends Fragment {
 
 
                 public void onLocationChanged(Location location) {
+     try {
 
-//                coorLat = "" + (float) Math.round(location.getLatitude() * 1000000) / 1000000;
-//                coorLong = "" + (float) Math.round(location.getLongitude() * 1000000) / 1000000;
-                    coorLat = "" + (float) location.getLatitude();
-                    coorLong = "" + (float) location.getLongitude();
-                    tv.setText("Lat:" + coorLat + "\nLong:" + coorLong);
-                    shareMessage = getString(R.string.textIMLocationGPS) + coorLat + ",Long:" + coorLong + " http://google.com/search?q=" + coorLat + "+" + coorLong;
+         coorLat = "" + (float) location.getLatitude();
+         coorLong = "" + (float) location.getLongitude();
+         tv.setText("Lat:" + coorLat + "\nLong:" + coorLong);
+         shareMessage = getString(R.string.textIMLocationGPS) + coorLat + ",Long:" + coorLong + " http://google.com/search?q=" + coorLat + "+" + coorLong;
+     }
+     catch (IllegalStateException ex)
+     {  Toast.makeText(getContext(), "Error: IllegalState" , Toast.LENGTH_SHORT).show();}
+     catch ( NullPointerException ex)
+     {  Toast.makeText(getContext(), "Error: NullPointerException" , Toast.LENGTH_SHORT).show();}
+     catch (Exception e) {
+         Toast.makeText(getContext(), "Error: " + e.toString(), Toast.LENGTH_SHORT).show();
+     }
 
                 }
 

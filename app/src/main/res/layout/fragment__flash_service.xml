@@ -19,6 +19,7 @@
 
             android:textStyle="bold"
             android:layout_alignParentBottom="true" />
+
         <ImageView
             android:id="@+id/imageview_flash_service"
             android:layout_width="match_parent"

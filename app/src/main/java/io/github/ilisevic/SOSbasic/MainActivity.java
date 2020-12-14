@@ -20,7 +20,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.firebase.analytics.FirebaseAnalytics;
+//import com.google.firebase.analytics.FirebaseAnalytics;
 
 import io.github.ilisevic.SOSbasic.fragment.FragmentSoundService;
 import io.github.ilisevic.SOSbasic.fragment.FragmentFlash;
@@ -45,14 +45,14 @@ public class MainActivity extends AppCompatActivity {
     private TabLayout tabLayout;
     private AppBarLayout appBarLayout;
     private ViewPager viewPager;
-    private FirebaseAnalytics mFirebaseAnalytics;
+   // private FirebaseAnalytics mFirebaseAnalytics;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         // Obtain the FirebaseAnalytics instance.
-        mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
+       // mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
         tabLayout = findViewById(R.id.tablayout);
         appBarLayout = findViewById(R.id.appbar);
         viewPager = findViewById(R.id.viewpager);

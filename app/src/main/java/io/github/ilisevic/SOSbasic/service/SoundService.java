@@ -94,7 +94,7 @@ public class SoundService extends Service {
                 Notification notification = new NotificationCompat.Builder(getBaseContext(), CHANNEL_1_ID)
                         .setContentTitle("SoS Sound Service")
                         .setContentText(input)
-                        .setSmallIcon(R.drawable.audio)
+                        .setSmallIcon(R.drawable.audiow)
                         // .setLargeIcon(BitmapFactory.decodeResource(getResources(),R.drawable.logo_sos))
                         .setVisibility(NotificationCompat.VISIBILITY_PUBLIC)
                         .setContentIntent(pendingIntent)
