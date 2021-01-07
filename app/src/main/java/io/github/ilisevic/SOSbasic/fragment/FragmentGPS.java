@@ -9,8 +9,8 @@ import android.location.LocationManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.Settings;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.app.Fragment;
+import androidx.core.app.ActivityCompat;
+import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -89,7 +89,12 @@ public class FragmentGPS extends Fragment {
 
                 }
             };
-        } catch (Exception e) {
+        }
+        catch (IllegalStateException ex) //dodano 8.1.2021 u 00:02
+        {  Toast.makeText(getContext(), "Error: IllegalState" , Toast.LENGTH_SHORT).show();}
+        catch ( NullPointerException ex)
+        {  Toast.makeText(getContext(), "Error: NullPointerException" , Toast.LENGTH_SHORT).show();}
+        catch (Exception e) {
             Toast.makeText(getContext(), "Error: " + e.toString(), Toast.LENGTH_LONG).show();
 
 
@@ -136,7 +141,10 @@ public class FragmentGPS extends Fragment {
                     //*************************
 
                     locationManager.requestLocationUpdates("gps", 5000, 0, locationListener);//svakin n milisekundi traži lokaciju
+if (  coorLat == "y" || coorLong == "x")
+                    Toast.makeText(getContext(), "GPS still not available, please tap again in few seconds", Toast.LENGTH_LONG).show();
                     //**************************
+//TODO dodati red za ispis da nisu još očitane koordinate
 
                 } catch (Exception e) {
 

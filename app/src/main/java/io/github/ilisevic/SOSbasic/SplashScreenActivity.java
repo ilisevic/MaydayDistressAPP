@@ -1,11 +1,10 @@
 package io.github.ilisevic.SOSbasic;
 
-import android.content.Intent;
 import android.graphics.Color;
-import android.graphics.Typeface;
-import android.support.annotation.FontRes;
-import android.support.v4.content.res.ResourcesCompat;
-import android.support.v7.app.AppCompatActivity;
+
+import androidx.annotation.FontRes;
+import androidx.core.content.res.ResourcesCompat;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
