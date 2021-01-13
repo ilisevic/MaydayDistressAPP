@@ -71,7 +71,7 @@ public class FlashServiceThread2 extends Service {
 
         //////
         Notification notification = new NotificationCompat.Builder(getBaseContext(), CHANNEL_2_ID)
-                .setContentTitle("SOS Flash Service")
+                .setContentTitle("Continuously signaling Morse code SOS LIGHT signal")
                 .setContentText(input)
                 .setSmallIcon(R.drawable.sosbeacon1)
                 .setContentIntent(pendingIntent)

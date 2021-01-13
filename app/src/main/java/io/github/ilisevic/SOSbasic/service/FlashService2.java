@@ -78,9 +78,9 @@ public class FlashService2 extends Service {
 
         //////
         Notification notification = new NotificationCompat.Builder(getBaseContext(), CHANNEL_2_ID)
-                .setContentTitle("SOS Flash Service")
+                .setContentTitle("Continuously signaling Morse code SOS light signal")
                 .setContentText(input)
-                .setSmallIcon(R.drawable.sosbeacon1)
+                .setSmallIcon(R.drawable.radioantenna)
                 //   .setLargeIcon(BitmapFactory.decodeResource(getResources(),R.drawable.logo_sos))
                 .setContentIntent(pendingIntent)
                 .setPriority(NotificationCompat.PRIORITY_HIGH)

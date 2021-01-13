@@ -20,7 +20,7 @@ public class SplashScreenActivity extends AppCompatActivity {
                 .withSplashTimeOut(2500)
                 .withBackgroundColor(Color.parseColor("#DF2520"))
                 // .withHeaderText("To be sure that compass shows right direction please calibrate the phone's sensor magnetometer by holding phone up and moving it in a figure of number 8.")
-                .withFooterText("\n SOS Beacon & Locator 2020")
+                .withFooterText("\n          \b SOS!\n          \b 2021\n Beacon & Locator")
                 // .withBeforeLogoText("To be sure that compass shows right direction please calibrate the phone's sensor magnetometer by holding phone up and moving it in a figure of number 8.")
                 // .withAfterLogoText("\"Tap to close\"")
                 .withBackgroundResource(R.drawable.splash3);

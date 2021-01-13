@@ -1,6 +1,7 @@
 package io.github.ilisevic.SOSbasic.fragment;
 
 import android.Manifest;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
@@ -30,11 +31,19 @@ public class FragmentGPS extends Fragment {
     private LocationListener locationListener;
     private String coorLong = "x", coorLat = "y", shareMessage;
     private Button btnSend;
+    Context context;
 
     public FragmentGPS() {
         // Required empty public constructor
     }
 
+    @Override
+    public void onAttach(Context context) {
+       //dodano 13.1.2021
+
+        this.context = context;
+        super.onAttach(context);
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -61,11 +70,14 @@ public class FragmentGPS extends Fragment {
          shareMessage = getString(R.string.textIMLocationGPS) + coorLat + ",Long:" + coorLong + " http://google.com/search?q=" + coorLat + "+" + coorLong;
      }
      catch (IllegalStateException ex)
-     {  Toast.makeText(getContext(), "Error: IllegalState" , Toast.LENGTH_SHORT).show();}
-     catch ( NullPointerException ex)
-     {  Toast.makeText(getContext(), "Error: NullPointerException" , Toast.LENGTH_SHORT).show();}
+     { if(getContext() != null)
+         Toast.makeText(getContext(), "Error: IllegalState" , Toast.LENGTH_SHORT).show();}
+     catch ( NullPointerException exNp)
+     {  if(getContext() != null)
+         Toast.makeText(getContext(), "Error: NullPointerException" , Toast.LENGTH_SHORT).show();}
      catch (Exception e) {
-         Toast.makeText(getContext(), "Error: " + e.toString(), Toast.LENGTH_SHORT).show();
+         if(getContext() != null)
+             Toast.makeText(getContext(), "Error", Toast.LENGTH_SHORT).show();
      }
 
                 }
@@ -91,11 +103,15 @@ public class FragmentGPS extends Fragment {
             };
         }
         catch (IllegalStateException ex) //dodano 8.1.2021 u 00:02
-        {  Toast.makeText(getContext(), "Error: IllegalState" , Toast.LENGTH_SHORT).show();}
-        catch ( NullPointerException ex)
-        {  Toast.makeText(getContext(), "Error: NullPointerException" , Toast.LENGTH_SHORT).show();}
+        {  if(getContext() != null)
+            Toast.makeText(getContext(), "Error: IllegalState" , Toast.LENGTH_SHORT).show();}
+        catch ( NullPointerException exNp)
+        {
+            if(getContext() != null)
+            Toast.makeText(getContext(), "Error: NullPointerException" , Toast.LENGTH_SHORT).show();}
         catch (Exception e) {
-            Toast.makeText(getContext(), "Error: " + e.toString(), Toast.LENGTH_LONG).show();
+            if(getContext() != null)
+            Toast.makeText(getContext(), "Error", Toast.LENGTH_SHORT).show();
 
 
         }

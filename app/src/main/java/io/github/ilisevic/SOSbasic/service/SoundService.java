@@ -92,9 +92,9 @@ public class SoundService extends Service {
                 mediaPlayer.setLooping(true);
                 mediaPlayer.start();
                 Notification notification = new NotificationCompat.Builder(getBaseContext(), CHANNEL_1_ID)
-                        .setContentTitle("SoS Sound Service")
+                        .setContentTitle("Continuously signaling Morse code SOS AUDIO signal")
                         .setContentText(input)
-                        .setSmallIcon(R.drawable.audiow)
+                        .setSmallIcon(R.drawable.audioservice)
                         // .setLargeIcon(BitmapFactory.decodeResource(getResources(),R.drawable.logo_sos))
                         .setVisibility(NotificationCompat.VISIBILITY_PUBLIC)
                         .setContentIntent(pendingIntent)
